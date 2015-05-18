@@ -11,14 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516213146) do
+ActiveRecord::Schema.define(version: 20150518214559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "messages", force: :cascade do |t|
+    t.string  "text",    null: false
+    t.integer "user_id", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_foreign_key "messages", "users"
 end
