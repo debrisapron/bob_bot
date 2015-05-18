@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe User do
+describe User do
 
   it "has the name UserN after saving where N is its id" do
     user = User.create!

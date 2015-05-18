@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Bob do
+describe Bob do
 
   it "responds to a question with 'Sure.'" do
     resp = Bob.respond_to('Will it blend?')
