@@ -1,6 +1,6 @@
-class LobbyController < ApplicationController
+# class LobbyController < ApplicationController
 
-  def index
-  end
+#   def index
+#   end
 
-end
+# end
