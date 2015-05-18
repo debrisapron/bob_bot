@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   # POST /api/users
   def create
-    User.create!
-    head :ok
+    user = User.create!
+    render json: user
   end
 
 end
