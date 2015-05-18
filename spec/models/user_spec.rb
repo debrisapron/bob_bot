@@ -12,4 +12,13 @@ describe User do
     expect(user.name).to be_nil
   end
 
+  it "has a unique token after saving" do
+    user = User.create!
+    token1 = user.token
+    user = User.create!
+    token2 = user.token
+    expect(token1).to_not be_nil
+    expect(token1).to_not eq(token2)
+  end
+
 end
