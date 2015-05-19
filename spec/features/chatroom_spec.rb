@@ -9,8 +9,8 @@ feature 'chatroom', js: true do
 
   scenario 'showing existing messages from previous ten minutes' do
     visit '/'
-    find '.msg-wrap', text: 'Bar'
-    find '.msg-wrap', text: 'Baz'
+    find '.msg-text', text: 'Bar'
+    find '.msg-text', text: 'Baz'
     expect(page).to_not have_content 'Foo'
   end
 
