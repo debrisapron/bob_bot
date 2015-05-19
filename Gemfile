@@ -4,6 +4,7 @@ gem 'rails', '4.2.1'
 gem 'pg'
 gem 'active_model_serializers'
 gem 'jwt'
+gem 'thin'
 
 group :development, :test do
   gem 'byebug'
