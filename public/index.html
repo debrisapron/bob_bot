@@ -1,0 +1,84 @@
+<!doctype html>
+<title>Bob's chatroom</title>
+<script src="//cdn.jsdelivr.net/mithril/0.2.0/mithril.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<style>
+
+.chat-wrap {
+  width: 500px;
+  height: 700px;
+  margin: auto;
+  margin-top: 100px;
+  background-color:orange;
+}
+
+</style>
+<body>
+<script>
+
+// Our top-level namespace
+var chat = {}
+
+// User model
+chat.User = {
+  getCurrentUser: function () {
+    if(!chat.currentUser) {
+      chat.currentUser = m.request({
+        method: 'POST',
+        url: '/api/users',
+        unwrapSuccess: function(response) {
+          return response.user;
+        }
+      })
+    }
+    return chat.currentUser
+  }
+}
+
+// Message model
+chat.Message = {
+  post: function (text) {
+    // Can't post a message until we have a user
+    chat.User.getCurrentUser().then(function (currentUser) {
+      return m.request({
+        method: 'POST',
+        url: '/api/messages',
+        config: function (xhr) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + currentUser.token)
+        },
+        data: { message: { text: text } }
+      })
+    })
+  }
+}
+
+// Message box component
+chat.MsgBox = {
+  controller: function () {
+    return {
+      onkeydown: function (ev) {
+        if(ev.keyCode === 13) {
+          chat.Message.post(ev.target.value)
+          ev.target.value = ''
+        }
+      }
+    }
+  },
+  view: function (ctrl) {
+    return m('input[type="text"]', { id: 'msg-box', autofocus: 1, onkeydown: ctrl.onkeydown })
+  }
+}
+
+// Top-level container component
+chat.Container = {
+  view: function () {
+    return m('.chat-wrap', [
+      m.component(chat.MsgBox)
+    ])
+  }
+}
+
+m.mount(document.body, chat.Container)
+chat.User.getCurrentUser()
+
+</script>
