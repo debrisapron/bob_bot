@@ -18,17 +18,26 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.global_fixtures = :all
 
-  config.use_transactional_fixtures = true
-  # config.before(:suite) do
-  #   DatabaseCleaner.strategy = :truncation
-  # end
-  # config.before(:each) do
-  #   # DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
-  #   DatabaseCleaner.start
-  # end
-  # config.after(:each) do
-  #   DatabaseCleaner.clean
-  # end
+  # config.use_transactional_fixtures = true
+
+  # Below is from here:
+  # http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
+  # What a nightmare!
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   config.infer_spec_type_from_file_location!
 end
@@ -46,12 +55,12 @@ Capybara.javascript_driver = :poltergeist
 # so that transactional fixtures work properly
 # Taken from here: https://gist.github.com/josevalim/470808
 # But note caveats here (after "A few reasons"): http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
-class ActiveRecord::Base
-  mattr_accessor :shared_connection
-  @@shared_connection = nil
+# class ActiveRecord::Base
+#   mattr_accessor :shared_connection
+#   @@shared_connection = nil
  
-  def self.connection
-    @@shared_connection || retrieve_connection
-  end
-end
-ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+#   def self.connection
+#     @@shared_connection || retrieve_connection
+#   end
+# end
+# ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
