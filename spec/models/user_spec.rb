@@ -7,11 +7,6 @@ describe User do
     expect(user.name).to eq "User#{ user.id }"
   end
 
-  it "has a nil name before saving" do
-    user = User.new
-    expect(user.name).to be nil
-  end
-
   it "has a unique token after saving" do
     user = User.create!
     token1 = user.token

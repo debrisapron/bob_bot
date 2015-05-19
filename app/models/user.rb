@@ -1,17 +1,20 @@
-require 'securerandom'
+require 'jwt'
 
 class User < ActiveRecord::Base
 
-  before_create :generate_token
+  SECRET = Rails.application.secrets.secret_key_base
 
-  def name
-    new_record? ? nil : "User#{ id }"
+  def self.find_by_token(token)
+    id = JWT.decode(token, SECRET)[0]['id'].to_i
+    find(id)
   end
 
-  private
+  def name
+    "User#{ id }"
+  end
 
-  def generate_token
-    self.token = SecureRandom.uuid
+  def token
+    @token ||= JWT.encode({ id: id }, SECRET)
   end
 
 end
