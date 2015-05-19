@@ -1,15 +1,29 @@
 <!doctype html>
 <title>Bob's chatroom</title>
 <script src="//cdn.jsdelivr.net/mithril/0.2.0/mithril.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style>
 
-.chat-wrap {
-  width: 500px;
-  height: 700px;
+#chat-wrap {
+  width: 700px;
   margin: auto;
   margin-top: 100px;
-  background-color:orange;
+  background-color: #EEE;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+#msg-list {
+  width: 100%;
+  height: 600px;
+}
+
+#msg-box {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 0;
+  resize: none;
 }
 
 </style>
@@ -27,7 +41,7 @@ chat.User = {
         method: 'POST',
         url: '/api/users',
         unwrapSuccess: function(response) {
-          return response.user;
+          return response.user
         }
       })
     }
@@ -37,6 +51,16 @@ chat.User = {
 
 // Message model
 chat.Message = {
+  list: function () {
+    var since = moment.utc().subtract(10, 'minutes').toISOString();
+    return m.request({
+      method: 'GET',
+      url: '/api/messages?since=' + since,
+      unwrapSuccess: function(response) {
+        return response.messages
+      }
+    })
+  },
   post: function (text) {
     // Can't post a message until we have a user
     chat.User.getCurrentUser().then(function (currentUser) {
@@ -52,6 +76,29 @@ chat.Message = {
   }
 }
 
+// Message list component
+chat.MsgList = {
+  controller: function () {
+    return {
+      messages: chat.Message.list()
+    }
+  },
+  view: function (ctrl) {
+    return m('div#msg-list',
+      ctrl.messages().map(function (msg) {
+        return m('div.msg-wrap', [
+          m('span.msg-meta', [
+            m('span.msg-user', msg.user.name),
+            m('span.msg-time', moment(msg.user.created_at).format('HH:mm:ss'))
+          ]),
+          m('span', '> '),
+          m('span.msg-text', msg.text)
+        ])
+      })
+    )
+  }
+}
+
 // Message box component
 chat.MsgBox = {
   controller: function () {
@@ -60,19 +107,21 @@ chat.MsgBox = {
         if(ev.keyCode === 13) {
           chat.Message.post(ev.target.value)
           ev.target.value = ''
+          return false
         }
       }
     }
   },
   view: function (ctrl) {
-    return m('input[type="text"]', { id: 'msg-box', autofocus: 1, onkeydown: ctrl.onkeydown })
+    return m('textarea', { id: 'msg-box', autofocus: 1, onkeydown: ctrl.onkeydown })
   }
 }
 
 // Top-level container component
 chat.Container = {
   view: function () {
-    return m('.chat-wrap', [
+    return m('#chat-wrap', [
+      m.component(chat.MsgList),
       m.component(chat.MsgBox)
     ])
   }
