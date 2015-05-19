@@ -15,7 +15,7 @@ describe Message do
   end
 
   it "can retrieve all messages since a given time" do
-    msgs = Message.since('2015-01-01 00:00:01'.to_datetime)
+    msgs = Message.since(10.minutes.ago)
     expect(msgs.length).to eq 2
     expect(msgs.first.text).to eq 'Bar'
     expect(msgs.second.text).to eq 'Baz'

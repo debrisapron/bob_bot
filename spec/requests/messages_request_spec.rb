@@ -16,7 +16,7 @@ describe "Messages API" do
 
   context "GET" do
     it "gets messages since the given time" do
-      get "/api/messages?since=#{ '2015-01-01 00:00:01'.to_datetime }"
+      get "/api/messages?since=#{ 10.minutes.ago }"
       expect(response).to be_success
       expect(resp_data.messages.length).to eq 2
       expect(resp_data.messages.first.text).to eq 'Bar'
