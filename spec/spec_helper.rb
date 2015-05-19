@@ -1,3 +1,11 @@
+module SpecHelpers
+
+  def test_user
+    users(:test_user)
+  end
+
+end
+
 module JsonHelpers
 
   def resp_data
@@ -64,6 +72,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.include SpecHelpers
   config.include JsonHelpers, type: :request
 
 # The settings below are suggested to provide a good initial experience

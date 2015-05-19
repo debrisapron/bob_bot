@@ -1,0 +1,17 @@
+msg1:
+  id: 1
+  user_id: 1
+  text: Foo
+  created_at: 2015-01-01 00:00:00
+
+msg2:
+  id: 2
+  user_id: 1
+  text: Bar
+  created_at: 2015-01-01 00:00:02
+
+msg3:
+  id: 3
+  user_id: 1
+  text: Baz
+  created_at: 2015-01-01 00:00:04
