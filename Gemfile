@@ -5,6 +5,7 @@ gem 'pg'
 gem 'active_model_serializers'
 gem 'jwt'
 gem 'thin'
+gem 'faye-rails'
 
 group :development, :test do
   gem 'byebug'
