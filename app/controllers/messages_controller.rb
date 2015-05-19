@@ -1,5 +1,11 @@
 class MessagesController < ApplicationController
 
+  # GET /api/messages
+  def index
+    messages = Message.since(params[:since].to_datetime)
+    render json: messages
+  end
+
   # POST /api/messages
   def create
     current_user = User.find_by_token(request.authorization.split[1])

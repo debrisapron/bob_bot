@@ -13,6 +13,7 @@ feature 'chatroom', js: true do
     # FIXME For some reason fill_in is not working right now so using find & set instead
     find('#msg-box').set('Foo bar baz')
     find('#msg-box').native.send_key(:Enter)
+    sleep(1)
     expect(Message.exists?).to be true
   end
 

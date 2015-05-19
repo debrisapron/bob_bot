@@ -15,4 +15,16 @@ describe "Messages API" do
     end
   end
 
+  context "GET" do
+    it "gets messages since the given time" do
+      t = DateTime.now
+      user = User.create!
+      Message.create!(user: user, text: 'Kazoo')
+      get "/api/messages?since=#{ t }"
+      expect(response).to be_success
+      expect(resp_data.messages.length).to eq 1
+      expect(resp_data.messages.first.text).to eq 'Kazoo'
+    end
+  end
+
 end
