@@ -5,8 +5,8 @@ describe Message do
   it "can be created with a user and text" do
     user = User.create!
     message = Message.create!(user: user, text: 'Booyakasha')
-    expect(message.user).to equal(user)
-    expect(message.text).to eq('Booyakasha')
+    expect(message.user).to equal user
+    expect(message.text).to eq 'Booyakasha'
   end
 
   it "must be created with a user and text" do
