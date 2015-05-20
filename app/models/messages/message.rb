@@ -1,9 +1,8 @@
 class Message < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :addressee,
-    class_name: :User
 
+  validates :user, presence: true
   validates :text, presence: true
 
   after_create :notify_subscribers
@@ -17,28 +16,6 @@ class Message < ActiveRecord::Base
   def initialize(*args)
     raise "Cannot instantiate the base Message class" if self.class == Message
     super
-  end
-
-  def text=(t)
-    set_addressee_from_text(t)
-    super(t)
-  end
-
-  def set_addressee_from_text(t)
-    addr = t.scan(/^@(\S+)/).flatten.first
-    return unless addr
-    if addr.downcase == 'bob'
-      self.addressee_id = Bob.id
-    else
-      addr_id = addr[/[0-9]+$/]
-      if addr_id && User.exists?(addr_id.to_i)
-        self.addressee_id = addr_id.to_i
-      end
-    end
-  end
-
-  def private?
-    addressee.present?
   end
 
   protected

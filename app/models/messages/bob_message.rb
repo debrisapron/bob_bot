@@ -1,4 +1,6 @@
-class BobMessage < Message
+class BobMessage < UserMessage
+
+  before_validation :set_user_id
 
   def prompt=(user_msg)
     response = Bob.respond_to(user_msg.text.sub(/^@\S*/, '').strip)
@@ -8,12 +10,12 @@ class BobMessage < Message
 
   protected
 
-  def notify_subscribers
-    if private?
-      publish("/private_messages/#{ addressee.token }")
-    else
-      super
-    end
+  def prompt_bob; end
+
+  private
+
+  def set_user_id
+    self.user_id = Bob.id
   end
 
 end
