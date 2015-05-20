@@ -10,12 +10,13 @@
   width: 700px;
   margin: auto;
   margin-top: 100px;
-  background-color: #EEE;
   padding: 5px;
   padding-bottom: 0;
 }
 
 #msg-list {
+  background-color: #EEE;
+  padding: 5px;
   width: 100%;
   height: 600px;
 }
@@ -25,6 +26,14 @@
   height: 100px;
   margin-bottom: 0;
   resize: none;
+}
+
+.welcome {
+  font-weight: bold;
+}
+
+.msg-wrap {
+  margin-bottom: 3px;
 }
 
 .msg-meta {
@@ -49,7 +58,7 @@
 // Our top-level namespace
 var chat = {}
 
-// User model
+// User services
 chat.User = {
   joinChat: function () {
     return m
@@ -69,7 +78,7 @@ chat.User = {
 // Message list model
 chat.Messages = m.prop([])
 
-// Message model
+// Message services
 chat.Message = {
   sync: function () {
     chat.Message.getList().then(chat.Messages)
@@ -142,8 +151,16 @@ chat.MsgBox = {
 
 // Top-level container component
 chat.Container = {
-  view: function () {
+  controller: function () {
+    return {
+      welcome:
+        'Welcome to the chatroom! You are signed in as ' + 
+        chat.currentUser.name
+    }
+  },
+  view: function (ctrl) {
     return m('#chat-wrap', [
+      m('.welcome', ctrl.welcome),
       m.component(chat.MsgList),
       m.component(chat.MsgBox)
     ])

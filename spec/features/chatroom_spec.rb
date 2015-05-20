@@ -2,10 +2,11 @@ require 'rails_helper'
 
 feature 'chatroom', js: true do
 
-  # scenario 'joining' do
-  #   visit '/'
-  #   expect(User.exists?).to be true
-  # end
+  scenario 'joining' do
+    visit '/'
+    find '.welcome'
+    expect(page).to have_content "You are signed in as #{ User.last.name }"
+  end
 
   scenario 'showing existing messages from previous ten minutes' do
     visit '/'
