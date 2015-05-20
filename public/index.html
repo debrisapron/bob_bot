@@ -2,6 +2,7 @@
 <title>Bob's chatroom</title>
 <script src="//cdn.jsdelivr.net/mithril/0.2.0/mithril.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="/faye/client.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style>
 
@@ -49,9 +50,15 @@ chat.User = {
   }
 }
 
+// Message list model
+chat.Messages = m.prop([])
+
 // Message model
 chat.Message = {
-  list: function () {
+  sync: function () {
+    chat.Message.getList().then(chat.Messages)
+  },
+  getList: function () {
     var since = moment.utc().subtract(10, 'minutes').toISOString();
     return m.request({
       method: 'GET',
@@ -79,8 +86,10 @@ chat.Message = {
 // Message list component
 chat.MsgList = {
   controller: function () {
+    new Faye.Client('/faye').subscribe('/public_message', chat.Message.sync)
+    chat.Message.sync()
     return {
-      messages: chat.Message.list()
+      messages: chat.Messages
     }
   },
   view: function (ctrl) {

@@ -1,7 +1,10 @@
-class RealtimeController < FayeRails::Controller
+# class RealtimeController < FayeRails::Controller
 
-  observe Message, :after_create do
-    RealtimeController.publish('/public_message')
-  end
-  
-end
+# p "HGIYGIGIUGIUG!!!!!!!!!!!"
+
+#   observe Message, :after_create do
+#     p('I SEE YOU')
+#     RealtimeController.publish('/public_message', { foo: 'bar' })
+#   end
+
+# end

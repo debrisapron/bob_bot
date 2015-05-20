@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
   def create
     current_user = User.find_by_token(request.authorization.split[1])
     Message.create!(allowed_params.merge(user_id: current_user.id))
+    notify_subscribers
     head :ok
   end
 
@@ -17,6 +18,11 @@ class MessagesController < ApplicationController
 
   def allowed_params
     @allowed_params ||= params.require(:message).permit(:text)
+  end
+
+  def notify_subscribers
+    client = Faye::Client.new('http://localhost:3000/faye')
+    client.publish('/public_message', {})
   end
 
 end
