@@ -22,5 +22,6 @@ msg3:
 msg4:
   id: 4
   type: BobMessage
+  user_id: 0
   text: Sure.
   created_at: <%= 6.minutes.ago %>

@@ -1,0 +1,2 @@
+class BobSerializer < UserSerializer
+end

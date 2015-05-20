@@ -1,4 +1,4 @@
-module Bob
+class Bob < User
 
   RULES = {
     [/^[^a-z]*$/, /[A-Z]+/] => 'Woah, chill out!',
@@ -16,8 +16,12 @@ module Bob
     matching_responses.join(' ')
   end
 
-  def self.id
-    -1
+  def name
+    'Bob'
+  end
+
+  def token
+    nil
   end
 
 end

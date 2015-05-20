@@ -79,7 +79,6 @@ chat.Message = {
       method: 'GET',
       url: '/api/messages?since=' + since,
       unwrapSuccess: function(response) {
-        console.log(response)
         return response.messages
       }
     })
