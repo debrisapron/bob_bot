@@ -16,4 +16,9 @@ describe User do
     expect(token1).to_not eq token2
   end
 
+  it "creates a join message after saving" do
+    user = User.create!
+    expect(JoinMessage.find_by(user_id: user.id)).to_not be nil
+  end
+
 end

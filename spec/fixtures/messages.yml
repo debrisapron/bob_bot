@@ -25,3 +25,17 @@ msg4:
   user_id: 0
   text: Sure.
   created_at: <%= 6.minutes.ago %>
+
+msg5:
+  id: 5
+  type: JoinMessage
+  user_id: 2
+  created_at: <%= 5.minutes.ago %>
+
+msg6:
+  id: 6
+  type: UserMessage
+  user_id: 2
+  addressee_id: 0
+  text: "@bob u liek pokemans?"
+  created_at: <%= 4.minutes.ago %>

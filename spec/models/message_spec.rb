@@ -4,10 +4,12 @@ describe Message do
 
   it "can retrieve all messages since a given time" do
     msgs = Message.since(10.minutes.ago)
-    expect(msgs.length).to eq 3
+    expect(msgs.length).to eq 5
     expect(msgs.first.text).to eq 'Bar'
     expect(msgs.second.text).to eq 'Baz'
     expect(msgs.third.text).to eq 'Sure.'
+    expect(msgs.fourth.type).to eq 'JoinMessage'
+    expect(msgs.fifth.text).to eq '@bob u liek pokemans?'
   end
 
   context UserMessage do

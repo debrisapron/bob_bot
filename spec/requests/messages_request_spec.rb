@@ -16,23 +16,32 @@ describe "Messages API" do
 
   context "GET" do
     it "gets messages since the given time" do
-      get "/api/messages?since=#{ 10.minutes.ago }"
+      get(
+        "/api/messages?since=#{ 10.minutes.ago }",
+        nil,
+        { Authorization: "Bearer #{ test_user.token }" }
+      )
       expect(response).to be_success
-      msgs = resp_data.messages
-      expect(msgs.length).to eq 3
+      expect(resp_data.messages.length).to eq 4
+      first, second, third, fourth = resp_data.messages
 
-      expect(msgs.first.text).to eq 'Bar'
-      expect(msgs.first.type).to eq 'UserMessage'
-      expect(msgs.first.user.name).to eq 'User1'
-      expect(msgs.first.user.token).to be nil
+      expect(first.text).to eq 'Bar'
+      expect(first.type).to eq 'UserMessage'
+      expect(first.user.name).to eq 'User1'
+      expect(first.user.token).to be nil
 
-      expect(msgs.second.text).to eq 'Baz'
-      expect(msgs.second.type).to eq 'UserMessage'
+      expect(second.text).to eq 'Baz'
+      expect(second.type).to eq 'UserMessage'
 
-      expect(msgs.third.text).to eq 'Sure.'
-      expect(msgs.third.type).to eq 'BobMessage'
-      expect(msgs.third.user.name).to eq 'Bob'
-      expect(msgs.third.user.token).to be nil
+      expect(third.text).to eq 'Sure.'
+      expect(third.type).to eq 'BobMessage'
+      expect(third.user.name).to eq 'Bob'
+      expect(third.user.token).to be nil
+
+      expect(fourth.type).to eq 'JoinMessage'
+      expect(fourth.user.name).to eq 'User2'
+
+      # PM for Bob is not returned
     end
   end
 

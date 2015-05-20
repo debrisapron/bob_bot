@@ -51,17 +51,18 @@ var chat = {}
 
 // User model
 chat.User = {
-  getCurrentUser: function () {
-    if(!chat.currentUser) {
-      chat.currentUser = m.request({
+  joinChat: function () {
+    return m
+      .request({
         method: 'POST',
         url: '/api/users',
         unwrapSuccess: function(response) {
           return response.user
         }
       })
-    }
-    return chat.currentUser
+      .then(function (user) {
+        chat.currentUser = user;
+      })
   }
 }
 
@@ -78,23 +79,22 @@ chat.Message = {
     return m.request({
       method: 'GET',
       url: '/api/messages?since=' + since,
+      config: chat.Message.configAuth,
       unwrapSuccess: function(response) {
         return response.messages
       }
     })
   },
   post: function (text) {
-    // Can't post a message until we have a user
-    chat.User.getCurrentUser().then(function (currentUser) {
-      return m.request({
-        method: 'POST',
-        url: '/api/messages',
-        config: function (xhr) {
-          xhr.setRequestHeader('Authorization', 'Bearer ' + currentUser.token)
-        },
-        data: { message: { text: text } }
-      })
+    return m.request({
+      method: 'POST',
+      url: '/api/messages',
+      config: chat.Message.configAuth,
+      data: { message: { text: text } }
     })
+  },
+  configAuth: function (xhr) {
+    xhr.setRequestHeader('Authorization', 'Bearer ' + chat.currentUser.token)
   }
 }
 
@@ -150,7 +150,8 @@ chat.Container = {
   }
 }
 
-m.mount(document.body, chat.Container)
-chat.User.getCurrentUser()
+chat.User.joinChat().then(function () {
+  m.mount(document.body, chat.Container)
+})
 
 </script>

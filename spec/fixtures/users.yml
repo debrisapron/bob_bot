@@ -4,3 +4,6 @@ bob:
 
 test_user:
   id: 1
+
+another_user:
+  id: 2
