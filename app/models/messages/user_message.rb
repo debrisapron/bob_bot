@@ -7,7 +7,9 @@ class UserMessage < Message
   private
 
   def prompt_bob
-    BobMessage.create!(prompt: text) if addressee_id.nil?
+    if addressee_id.nil? || addressee_id == Bob.id
+      BobMessage.create!(prompt: self)
+    end
   end
 
 end

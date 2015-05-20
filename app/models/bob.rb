@@ -16,6 +16,15 @@ class Bob < User
     matching_responses.join(' ')
   end
 
+  # There's only one bob
+  def self.instance
+    @bob ||= Bob.first
+  end
+
+  def self.id
+    instance.id
+  end
+
   def name
     'Bob'
   end

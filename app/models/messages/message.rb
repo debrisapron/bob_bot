@@ -21,20 +21,28 @@ class Message < ActiveRecord::Base
 
   def text=(t)
     set_addressee_from_text(t)
-    super(t.sub(/^@\S*/, '').strip)
+    super(t)
   end
 
   def set_addressee_from_text(t)
     addr = t.scan(/^@(\S+)/).flatten.first
     return unless addr
-    # if addr.downcase == 'bob'
-    #   self.addressee_id = Bob.id
-    # else
+    if addr.downcase == 'bob'
+      self.addressee_id = Bob.id
+    else
       addr_id = addr[/[0-9]+$/]
       if addr_id && User.exists?(addr_id.to_i)
         self.addressee_id = addr_id.to_i
       end
-    # end
+    end
+  end
+
+  def private?
+    addressee.present?
+  end
+
+  def public?
+    !private?
   end
 
   private

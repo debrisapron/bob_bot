@@ -58,39 +58,40 @@ describe Message do
 
     end
 
-    # context "PM to Bob" do
+    context "PM to Bob" do
 
-    #   before(:each) do
-    #     @message = UserMessage.create!(
-    #       user: test_user, 
-    #       text: "@bOb I LOVE YOU SO MUCH"
-    #     )
-    #   end
+      before(:each) do
+        @message = UserMessage.create!(
+          user: test_user, 
+          text: "@bOb I LOVE YOU SO MUCH"
+        )
+      end
 
-    #   it "can be seen by the author" do
-    #     expect(Message.for(test_user)).to include @message
-    #   end
+      it "can be seen by the author" do
+        expect(Message.for(test_user)).to include @message
+      end
     
-    #   it "cannot be seen by other users" do
-    #     another_new_user = User.create!
-    #     expect(Message.for(another_new_user)).to_not include @message
-    #   end
+      it "cannot be seen by other users" do
+        another_new_user = User.create!
+        expect(Message.for(another_new_user)).to_not include @message
+      end
 
-    #   # it "prompts a private response from Bob" do
-    #   #   resps = BobMessage.where.not(id: 4)
-    #   #   expect(resps.length).to eq 1
-    #   #   expect(resps.first.text).to eq 'Woah, chill out!'
-    #   # end
+      it "prompts a private response from Bob" do
+        resps = BobMessage.where.not(id: 4)
+        expect(resps.length).to eq 1
+        expect(resps.first.text).to eq '@User1 Woah, chill out!'
+      end
 
-    # end
+    end
 
   end
 
   context BobMessage do
 
-    it "can be created with a prompt and saves the correct text" do
-      message = BobMessage.create!(prompt: 'Will it blend?')
-      expect(message.text).to eq 'Sure.'
+    it "can be created with a prompt msg and saves the correct text" do
+      msg = UserMessage.create!(user: test_user, text: 'Will it blend?')
+      bob_msg = BobMessage.create!(prompt: msg)
+      expect(bob_msg.text).to eq 'Sure.'
     end
 
     it "must be created with a prompt" do
