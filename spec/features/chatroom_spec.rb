@@ -7,12 +7,12 @@ feature 'chatroom', js: true do
   #   expect(User.exists?).to be true
   # end
 
-  scenario 'showing existing messages from previous ten minutes' do
-    visit '/'
-    find '.msg-text', text: 'Bar'
-    find '.msg-text', text: 'Baz'
-    expect(page).to_not have_content 'Foo'
-  end
+  # scenario 'showing existing messages from previous ten minutes' do
+  #   visit '/'
+  #   find '.msg-text', text: 'Bar'
+  #   find '.msg-text', text: 'Baz'
+  #   expect(page).to_not have_content 'Foo'
+  # end
 
   # scenario 'posting a comment' do
   #   visit '/'

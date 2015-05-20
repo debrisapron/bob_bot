@@ -1,17 +1,20 @@
 msg1:
   id: 1
+  type: UserMessage
   user_id: 1
   text: Foo
   created_at: <%= 12.minutes.ago %>
 
 msg2:
   id: 2
+  type: UserMessage
   user_id: 1
   text: Bar
   created_at: <%= 8.minutes.ago %>
 
 msg3:
   id: 3
+  type: UserMessage
   user_id: 1
   text: Baz
   created_at: <%= 7.minutes.ago %>

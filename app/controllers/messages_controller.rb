@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   # POST /api/messages
   def create
     current_user = User.find_by_token(request.authorization.split[1])
-    Message.create!(allowed_params.merge(user_id: current_user.id))
+    UserMessage.create!(allowed_params.merge(user_id: current_user.id))
     head :ok
   end
 

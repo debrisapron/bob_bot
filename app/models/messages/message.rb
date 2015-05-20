@@ -9,6 +9,13 @@ class Message < ActiveRecord::Base
 
   scope :since, ->(t) { where('created_at > ?', t).order(:created_at) }
 
+  # This is the abstract base class for all the message types
+  # so stop it from being instantiated
+  def initialize(*args)
+    raise "Cannot instantiate the base Message class" if self.class == Message
+    super
+  end
+
   private
 
   # REFACTOR putting this here for simplicity, however this is _not_
