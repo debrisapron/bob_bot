@@ -23,6 +23,7 @@ describe "Messages API" do
       expect(resp_data.messages.second.text).to eq 'Baz'
       expect(resp_data.messages.third.text).to eq 'Sure.'
       expect(resp_data.messages.first.user.name).to eq 'User1'
+      expect(resp_data.messages.first.user.token).to be nil
     end
   end
 
