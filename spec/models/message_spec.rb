@@ -24,6 +24,11 @@ describe Message do
       expect{UserMessage.create!(text: 'Booyakasha')}.to raise_error
     end
 
+    it "causes a response from Bob when created" do
+      message = UserMessage.create!(user: test_user, text: 'R U THERE BOB?')
+      expect(BobMessage.find_by(text: 'Woah, chill out! Sure.')).to_not be nil
+    end
+
   end
 
   context BobMessage do
