@@ -18,9 +18,10 @@ describe "Messages API" do
     it "gets messages since the given time" do
       get "/api/messages?since=#{ 10.minutes.ago }"
       expect(response).to be_success
-      expect(resp_data.messages.length).to eq 2
+      expect(resp_data.messages.length).to eq 3
       expect(resp_data.messages.first.text).to eq 'Bar'
       expect(resp_data.messages.second.text).to eq 'Baz'
+      expect(resp_data.messages.third.text).to eq 'Sure.'
       expect(resp_data.messages.first.user.name).to eq 'User1'
     end
   end

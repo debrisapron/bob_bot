@@ -113,8 +113,8 @@ chat.MsgList = {
       ctrl.messages().map(function (msg) {
         return m('div.msg-wrap', [
           m('div.msg-meta', [
-            m('span.msg-user', msg.user.name),
-            m('span.msg-time', moment(msg.user.created_at).format('HH:mm:ss'))
+            m('span.msg-user', msg.user ? msg.user.name : 'BOB'),
+            m('span.msg-time', moment(msg.created_at).format('HH:mm:ss'))
           ]),
           m('span.msg-text', msg.text)
         ])

@@ -11,6 +11,7 @@ feature 'chatroom', js: true do
     visit '/'
     find '.msg-text', text: 'Bar'
     find '.msg-text', text: 'Baz'
+    find '.msg-text', text: 'Sure.'
     expect(page).to_not have_content 'Foo'
   end
 
