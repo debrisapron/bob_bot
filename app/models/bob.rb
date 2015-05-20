@@ -16,4 +16,8 @@ module Bob
     matching_responses.join(' ')
   end
 
+  def self.id
+    -1
+  end
+
 end

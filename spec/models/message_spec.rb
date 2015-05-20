@@ -24,10 +24,65 @@ describe Message do
       expect{UserMessage.create!(text: 'Booyakasha')}.to raise_error
     end
 
-    it "causes a response from Bob when created" do
+    it "prompts a response from Bob" do
       message = UserMessage.create!(user: test_user, text: 'R U THERE BOB?')
       expect(BobMessage.find_by(text: 'Woah, chill out! Sure.')).to_not be nil
     end
+
+    context "PM to another user" do
+      
+      before(:each) do
+        @new_user = User.create!
+        @message = UserMessage.create!(
+          user: test_user, 
+          text: "@#{ @new_user.name } how u doin?"
+        )
+      end
+
+      it "can be seen by the author" do
+        expect(Message.for(test_user)).to include @message
+      end
+    
+      it "can be seen by the addressee" do
+        expect(Message.for(@new_user)).to include @message
+      end
+    
+      it "cannot be seen by other users" do
+        another_new_user = User.create!
+        expect(Message.for(another_new_user)).to_not include @message
+      end
+
+      it "does not prompt a response from Bob" do
+        expect(BobMessage.where.not(id: 4)).to be_empty
+      end
+
+    end
+
+    # context "PM to Bob" do
+
+    #   before(:each) do
+    #     @message = UserMessage.create!(
+    #       user: test_user, 
+    #       text: "@bOb I LOVE YOU SO MUCH"
+    #     )
+    #   end
+
+    #   it "can be seen by the author" do
+    #     expect(Message.for(test_user)).to include @message
+    #   end
+    
+    #   it "cannot be seen by other users" do
+    #     another_new_user = User.create!
+    #     expect(Message.for(another_new_user)).to_not include @message
+    #   end
+
+    #   # it "prompts a private response from Bob" do
+    #   #   resps = BobMessage.where.not(id: 4)
+    #   #   expect(resps.length).to eq 1
+    #   #   expect(resps.first.text).to eq 'Woah, chill out!'
+    #   # end
+
+    # end
 
   end
 
