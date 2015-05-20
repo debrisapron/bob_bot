@@ -41,20 +41,23 @@ class Message < ActiveRecord::Base
     addressee.present?
   end
 
-  def public?
-    !private?
+  protected
+
+  def self.faye_client
+    # WORKAROUND Not sure why I have to do this dance for a simple publish,
+    # but the faye-rails docs are really unhelpful and I'm tired
+    @faye_client ||= Faye::Client.new('http://localhost:3000/faye')
   end
 
-  private
+  def publish(channel)
+    Message.faye_client.publish(channel, {})
+  end
 
   # REFACTOR putting this here for simplicity, however this is _not_
   # a business domain concern, it is infrastructure, and should be
   # moved to an observer or similar
   def notify_subscribers
-    # WORKAROUND Not sure why I have to do this dance for a simple publish,
-    # but the faye-rails docs are really unhelpful and I'm tired
-    client = Faye::Client.new('http://localhost:3000/faye')
-    client.publish('/public_message', {})
+    publish('/public_messages')
   end
 
 end

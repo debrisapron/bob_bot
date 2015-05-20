@@ -6,4 +6,14 @@ class BobMessage < Message
     self.text = response
   end
 
+  protected
+
+  def notify_subscribers
+    if private?
+      publish("/private_messages/#{ addressee.token }")
+    else
+      super
+    end
+  end
+
 end

@@ -101,7 +101,7 @@ chat.Message = {
 // Message list component
 chat.MsgList = {
   controller: function () {
-    new Faye.Client('/faye').subscribe('/public_message', chat.Message.sync)
+    new Faye.Client('/faye').subscribe('/public_messages', chat.Message.sync)
     chat.Message.sync()
     return {
       messages: chat.Messages

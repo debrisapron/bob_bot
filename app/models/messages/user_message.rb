@@ -4,6 +4,17 @@ class UserMessage < Message
 
   validates :user, presence: true
 
+  protected
+
+  def notify_subscribers
+    if private?
+      publish("/private_messages/#{ user.token }")
+      publish("/private_messages/#{ addressee.token }")
+    else
+      super
+    end
+  end
+
   private
 
   def prompt_bob
