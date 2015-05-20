@@ -1,0 +1,2 @@
+class UserMessageSerializer < MessageSerializer
+end

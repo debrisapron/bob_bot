@@ -27,6 +27,21 @@
   resize: none;
 }
 
+.msg-meta {
+  width: 200px;
+  background-color: #CCC;
+  padding: 3px 3px 3px 3px;
+}
+
+.msg-user {
+  display: inline-block;
+  width: 60px;
+}
+
+.msg-text {
+  font-size: 1.2em;
+}
+
 </style>
 <body>
 <script>
@@ -64,6 +79,7 @@ chat.Message = {
       method: 'GET',
       url: '/api/messages?since=' + since,
       unwrapSuccess: function(response) {
+        console.log(response)
         return response.messages
       }
     })
@@ -96,11 +112,10 @@ chat.MsgList = {
     return m('div#msg-list',
       ctrl.messages().map(function (msg) {
         return m('div.msg-wrap', [
-          m('span.msg-meta', [
+          m('div.msg-meta', [
             m('span.msg-user', msg.user.name),
             m('span.msg-time', moment(msg.user.created_at).format('HH:mm:ss'))
           ]),
-          m('span', '> '),
           m('span.msg-text', msg.text)
         ])
       })

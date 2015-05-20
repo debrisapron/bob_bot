@@ -7,7 +7,7 @@ gem 'jwt'
 gem 'thin'
 gem 'faye-rails'
 
-group :development, :test do
+group :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'

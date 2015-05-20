@@ -21,6 +21,7 @@ describe "Messages API" do
       expect(resp_data.messages.length).to eq 2
       expect(resp_data.messages.first.text).to eq 'Bar'
       expect(resp_data.messages.second.text).to eq 'Baz'
+      expect(resp_data.messages.first.user.name).to eq 'User1'
     end
   end
 
