@@ -10,9 +10,10 @@ feature 'chatroom', js: true do
 
   scenario 'showing existing public messages from previous ten minutes' do
     visit '/'
-    find '.msg-text', text: 'Bar'
-    find '.msg-text', text: 'Baz'
-    find '.msg-text', text: 'Sure.'
+    find '.msg-list'
+    expect(page).to have_content 'Bar'
+    expect(page).to have_content 'Baz'
+    expect(page).to have_content 'Sure.'
     expect(page).to_not have_content 'Foo'
   end
 

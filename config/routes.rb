@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   scope '/api' do
-    resources :users, only: :create
+    resource :users, only: [:create, :destroy]
     resources :messages, only: [:index, :create]
   end
 

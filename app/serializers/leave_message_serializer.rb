@@ -1,0 +1,2 @@
+class LeaveMessageSerializer < MessageSerializer
+end

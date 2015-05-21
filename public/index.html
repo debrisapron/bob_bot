@@ -81,6 +81,7 @@
           currentUser = user
           sync()
           subscribeToNewMessages()
+          waitForUnload()
           return user
         })
     }
@@ -91,6 +92,14 @@
         url: '/api/messages',
         config: configAuth,
         data: { message: { text: text } }
+      })
+    }
+
+    function leaveChat() {
+      return m.request({
+        method: 'DELETE',
+        url: '/api/users',
+        config: configAuth
       })
     }
 
@@ -133,6 +142,13 @@
       var fayeClient = new Faye.Client('/faye')
       fayeClient.subscribe('/public_messages', sync)
       fayeClient.subscribe('/private_messages/' + currentUser.token, sync)
+    }
+
+    function waitForUnload() {
+      window.onbeforeunload = function () {
+        leaveChat()
+        return 'Leaving the page will sign you out of chat.'
+      }
     }
 
     return {
@@ -197,14 +213,10 @@
       function controller(msg) {
         var isCU = msg.user.id === currentUser.id
         var name = isCU ? 'You' : msg.user.name
-        var text = msg.type === 'JoinMessage' ?
-          name + ' joined the chat' :
-          msg.text
-        var colors
         return {
           name: name,
           time: moment(msg.created_at).format('HH:mm:ss'),
-          text: text,
+          text: msg.text,
           colors: userColors(msg),
           type: msg.type,
           isCU: isCU,
@@ -253,8 +265,12 @@
       }
 
       function systemMsgBodyView(ctrl) {
+        var text =
+          ctrl.name + ' ' +
+          (ctrl.type === 'JoinMessage' ? 'joined' : 'left') +
+          ' the chat'
         return [
-          m('div.well.well-sm', ctrl.text),
+          m('div.well.well-sm', text),
         ]
       }
 

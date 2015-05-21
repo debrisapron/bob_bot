@@ -1,0 +1,2 @@
+class LeaveMessage < Message
+end

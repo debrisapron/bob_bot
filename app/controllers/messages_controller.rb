@@ -12,12 +12,6 @@ class MessagesController < ApplicationController
     head :ok
   end
 
-  private
-
-  def current_user
-    @current_user ||= User.find_by_token(request.authorization.split[1])
-  end
-
   def allowed_params
     @allowed_params ||= params.require(:message).permit(:text)
   end

@@ -3,8 +3,6 @@ class UserMessage < Message
   belongs_to :addressee,
     class_name: :User
 
-  validates :text, presence: true
-
   after_create :prompt_bob
 
   def text=(t)

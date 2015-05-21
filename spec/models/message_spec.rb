@@ -14,15 +14,17 @@ describe Message do
 
   context UserMessage do
 
-    it "can be created with a user and text" do
+    it "can be created with a user and text or just user" do
       message = UserMessage.create!(user: test_user, text: 'Booyakasha')
       expect(message.user).to equal test_user
       expect(message.text).to eq 'Booyakasha'
+      message = UserMessage.create!(user: test_user)
+      expect(message.user).to equal test_user
+      expect(message.text).to eq nil
     end
 
-    it "must be created with a user and text" do
+    it "must be created with a user" do
       expect{UserMessage.create!}.to raise_error
-      expect{UserMessage.create!(user: test_user)}.to raise_error
       expect{UserMessage.create!(text: 'Booyakasha')}.to raise_error
     end
 

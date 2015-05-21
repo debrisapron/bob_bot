@@ -14,4 +14,16 @@ describe "Users API" do
     end
   end
 
+  context "DELETE" do
+    it "creates a leave message for the current user" do
+      delete(
+        '/api/users',
+        nil,
+        { Authorization: "Bearer #{ test_user.token }" }
+      )
+      expect(response).to be_success
+      expect(LeaveMessage.find_by(user: test_user)).to_not be nil
+    end
+  end
+
 end
