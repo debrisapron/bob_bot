@@ -100,6 +100,24 @@ describe Message do
       expect{BobMessage.create!}.to raise_error
     end
 
+    context "PM from Bob" do
+
+      before(:each) do
+        msg = UserMessage.create!(user: test_user, text: '@Bob can you even?')
+        @message = BobMessage.create!(prompt: msg)
+      end
+
+      it "can be seen by the addressee" do
+        expect(Message.for(test_user)).to include @message
+      end
+
+      it "cannot be seen by other users" do
+        new_user = User.create!
+        expect(Message.for(new_user)).to_not include @message
+      end
+
+    end
+
   end
 
 end
