@@ -2,11 +2,12 @@
 <title>Bob's chatroom</title>
 <script src="//cdn.jsdelivr.net/mithril/0.2.0/mithril.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.1.1/randomColor.min.js"></script>
 <script src="/faye/client.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <style>
 
-#chat-wrap {
+.chat-wrap {
   width: 700px;
   margin: auto;
   margin-top: 100px;
@@ -14,18 +15,24 @@
   padding-bottom: 0;
 }
 
-#msg-list {
+.msg-list-wrap {
   background-color: #EEE;
   padding: 5px;
   width: 100%;
   height: 600px;
+  overflow-y: scroll;
 }
 
-#msg-box {
+.msg-list {
   width: 100%;
-  height: 100px;
+  bottom: 0;
+}
+
+.msg-box {
+  width: 100%;
   margin-bottom: 0;
   resize: none;
+  font-size: 1.2em;
 }
 
 .welcome {
@@ -38,8 +45,8 @@
 
 .msg-meta {
   width: 200px;
-  background-color: #CCC;
   padding: 3px 3px 3px 3px;
+  margin-right: 5px;
 }
 
 .msg-user {
@@ -51,129 +58,229 @@
   font-size: 1.2em;
 }
 
+.msg-bob {
+  font-family: monospace;
+}
+
 </style>
 <body>
 <script>
 
-// Our top-level namespace
-var chat = {}
+(function () {
 
-// User services
-chat.User = {
-  joinChat: function () {
-    return m
-      .request({
+  var currentUser
+  var currentMessages = m.prop([])
+
+  // API services
+  var services = (function () {
+
+    function joinChat() {
+      return m
+        .request({
+          method: 'POST',
+          url: '/api/users',
+          unwrapSuccess: function(response) {
+            return response.user
+          }
+        })
+        .then(function (user) {
+          currentUser = user
+          sync()
+          subscribeToNewMessages()
+          return user
+        })
+    }
+
+    function postMessage(text) {
+      return m.request({
         method: 'POST',
-        url: '/api/users',
+        url: '/api/messages',
+        config: configAuth,
+        data: { message: { text: text } }
+      })
+    }
+
+    function sync() {
+      getMessageList().then(merge)
+    }
+
+    function getMessageList(first) {
+      return m.request({
+        method: 'GET',
+        url: '/api/messages?since=' + lastMessageTime().toISOString(),
+        config: configAuth,
         unwrapSuccess: function(response) {
-          return response.user
+          return response.messages
         }
       })
-      .then(function (user) {
-        chat.currentUser = user;
-      })
-  }
-}
-
-// Message list model
-chat.Messages = m.prop([])
-
-// Message services
-chat.Message = {
-  sync: function () {
-    chat.Message.getList().then(chat.Messages)
-  },
-  getList: function () {
-    var since = moment.utc().subtract(10, 'minutes').toISOString();
-    return m.request({
-      method: 'GET',
-      url: '/api/messages?since=' + since,
-      config: chat.Message.configAuth,
-      unwrapSuccess: function(response) {
-        return response.messages
-      }
-    })
-  },
-  post: function (text) {
-    return m.request({
-      method: 'POST',
-      url: '/api/messages',
-      config: chat.Message.configAuth,
-      data: { message: { text: text } }
-    })
-  },
-  configAuth: function (xhr) {
-    xhr.setRequestHeader('Authorization', 'Bearer ' + chat.currentUser.token)
-  }
-}
-
-// Message list component
-chat.MsgList = {
-  controller: function () {
-    var client = new Faye.Client('/faye')
-    client.subscribe('/public_messages', chat.Message.sync)
-    client.subscribe(
-      '/private_messages/' + chat.currentUser.token,
-      chat.Message.sync
-    )
-    chat.Message.sync()
-    return {
-      messages: chat.Messages
     }
-  },
-  view: function (ctrl) {
-    return m('div#msg-list',
-      ctrl.messages().map(function (msg) {
-        return m('div.msg-wrap', [
-          m('div.msg-meta', [
-            m('span.msg-user', msg.user ? msg.user.name : 'BOB'),
-            m('span.msg-time', moment(msg.created_at).format('HH:mm:ss'))
-          ]),
-          m('span.msg-text', msg.text)
-        ])
-      })
-    )
-  }
-}
 
-// Message box component
-chat.MsgBox = {
-  controller: function () {
+    function merge(newMessages) {
+      var lmt = moment(lastMessageTime())
+      var cms = currentMessages()
+      newMessages.forEach(function (msg) {
+        if(moment(msg.created_at).isAfter(lmt)) cms.push(msg)
+      })
+      currentMessages(cms)
+    }
+
+    function lastMessageTime() {
+      var cms = currentMessages()
+      return cms.length ?
+        moment(cms[cms.length -1].created_at) :
+        moment.utc().subtract(10, 'minutes')
+    }
+
+    function configAuth(xhr) {
+      xhr.setRequestHeader('Authorization', 'Bearer ' + currentUser.token)
+    }
+
+    function subscribeToNewMessages() {
+      var fayeClient = new Faye.Client('/faye')
+      fayeClient.subscribe('/public_messages', sync)
+      fayeClient.subscribe('/private_messages/' + currentUser.token, sync)
+    }
+
     return {
-      onkeydown: function (ev) {
+      joinChat: joinChat,
+      postMessage: postMessage
+    }
+  })()
+
+  // Display components
+  var components = (function () {
+
+    var chatroom = (function () {
+
+      function controller() {
+        return {
+          welcome:
+            'Welcome to the chatroom! You are signed in as ' + currentUser.name,
+          messages: currentMessages,
+          onkeydown: onkeydown
+        }
+      }
+
+      function view(ctrl) {
+        //console.log(ctrl.messages())
+        return m('div.chat-wrap', [
+          m('div.welcome', ctrl.welcome),
+          m('div.msg-list-wrap', { config: scrollToBottom }, [
+            m('div.msg-list', ctrl.messages().map(function (msg) {
+              return m.component(message, msg)
+            }))
+          ]),
+          m('textarea.msg-box',
+            { autofocus: 1, rows: 3, onkeydown: ctrl.onkeydown }
+          )
+        ])
+      }
+
+      function scrollToBottom(ele) {
+        console.log(ele.scrollHeight)
+        ele.scrollTop = ele.scrollHeight
+      }
+
+      function onkeydown(ev) {
         if(ev.keyCode === 13) {
-          chat.Message.post(ev.target.value)
+          services.postMessage(ev.target.value)
           ev.target.value = ''
           return false
         }
       }
-    }
-  },
-  view: function (ctrl) {
-    return m('textarea', { id: 'msg-box', autofocus: 1, onkeydown: ctrl.onkeydown })
-  }
-}
 
-// Top-level container component
-chat.Container = {
-  controller: function () {
+      return {
+        controller: controller,
+        view: view
+      }
+    })()
+
+    // Must be outside the message component
+    // so it is shared between all its instances
+    var userColors = {} 
+
+    var message = (function () {
+
+      function controller(msg) {
+        var name = msg.user.id == currentUser.id ? 'You' : msg.user.name
+        var text = msg.type === 'JoinMessage' ?
+          name + ' joined the chat' :
+          msg.text
+        var colors
+        return {
+          name: name,
+          // time: moment(msg.created_at).format('HH:mm:ss'),
+          text: text,
+          colors: userColors(msg),
+          type: msg.type
+        }
+      }
+
+      function view(ctrl) {
+        var wrapClass = ctrl.type === 'BobMessage' ? 'msg-bob' : ''
+        return m('div.msg-wrap', { class: wrapClass }, msgBodyView(ctrl))
+      }
+
+      function msgBodyView(ctrl) {
+        switch(ctrl.type) {
+          case 'UserMessage':
+          case 'BobMessage':
+            return userMsgBodyView(ctrl)
+          case 'JoinMessage':
+          case 'LeaveMessage':
+            return systemMsgBodyView(ctrl)
+        }
+      }
+
+      function userMsgBodyView(ctrl) {
+        var metaStyle = {
+          backgroundColor: ctrl.colors[0],
+          color: ctrl.colors[1]
+        }
+        return [
+          m('span.msg-meta', { style: metaStyle }, [
+            m('span.msg-user', ctrl.name)
+            // m('span.msg-time', ctrl.time)
+          ]),
+          m('span.msg-text', ctrl.text)
+        ]
+      }
+
+      function systemMsgBodyView(ctrl) {
+        return [
+          m('span.msg-meta', ctrl.text)
+        ]
+      }
+
+      function userColors(msg) {
+        if(msg.type === 'BobMessage') return ['#444', '#fff']
+        var id = msg.user.id
+        if(id === currentUser.id) return ['#CCC', '#000']
+        return [
+          userColors[id] || (userColors[id] = newColor()),
+          '#000'
+        ]
+      }
+
+      function newColor() {
+        return randomColor({ luminosity: 'light', hue: 'random' })
+      }
+
+      return {
+        controller: controller,
+        view: view
+      }
+    })()
+
     return {
-      welcome:
-        'Welcome to the chatroom! You are signed in as ' + 
-        chat.currentUser.name
+      chatroom: chatroom
     }
-  },
-  view: function (ctrl) {
-    return m('#chat-wrap', [
-      m('.welcome', ctrl.welcome),
-      m.component(chat.MsgList),
-      m.component(chat.MsgBox)
-    ])
-  }
-}
+  })()
 
-chat.User.joinChat().then(function () {
-  m.mount(document.body, chat.Container)
-})
+  // Bootstrap the app oncce we have a current user
+  services.joinChat().then(function () {
+    m.mount(document.body, components.chatroom)
+  })
+})()
 
 </script>
