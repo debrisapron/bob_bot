@@ -25,7 +25,6 @@
 
 .msg-list {
   width: 100%;
-  bottom: 0;
 }
 
 .msg-box {
@@ -39,27 +38,22 @@
   font-weight: bold;
 }
 
-.msg-wrap {
-  margin-bottom: 3px;
+.msg-wrap .panel {
+  margin-bottom: 5px;
+  width: 500px;
+  clear: both;
 }
 
-.msg-meta {
-  width: 200px;
-  padding: 3px 3px 3px 3px;
-  margin-right: 5px;
-}
-
-.msg-user {
-  display: inline-block;
-  width: 60px;
-}
-
-.msg-text {
-  font-size: 1.2em;
+.msg-wrap .well {
+  margin-bottom: 5px;
 }
 
 .msg-bob {
   font-family: monospace;
+}
+
+.msg-private {
+  font-style: italic;
 }
 
 </style>
@@ -201,23 +195,31 @@
     var message = (function () {
 
       function controller(msg) {
-        var name = msg.user.id == currentUser.id ? 'You' : msg.user.name
+        var isCU = msg.user.id === currentUser.id
+        var name = isCU ? 'You' : msg.user.name
         var text = msg.type === 'JoinMessage' ?
           name + ' joined the chat' :
           msg.text
         var colors
         return {
           name: name,
-          // time: moment(msg.created_at).format('HH:mm:ss'),
+          time: moment(msg.created_at).format('HH:mm:ss'),
           text: text,
           colors: userColors(msg),
-          type: msg.type
+          type: msg.type,
+          isCU: isCU,
+          isPrivate: msg.is_private
         }
       }
 
-      function view(ctrl) {
-        var wrapClass = ctrl.type === 'BobMessage' ? 'msg-bob' : ''
-        return m('div.msg-wrap', { class: wrapClass }, msgBodyView(ctrl))
+      function view(msg) {
+        var wrapClass = []
+        if(msg.type === 'BobMessage') wrapClass.push('msg-bob')
+        if(msg.isPrivate) wrapClass.push('msg-private')
+        return m('div.msg-wrap', 
+          { class: wrapClass.join(' ') },
+          [msgBodyView(msg)]
+        )
       }
 
       function msgBodyView(ctrl) {
@@ -232,22 +234,27 @@
       }
 
       function userMsgBodyView(ctrl) {
-        var metaStyle = {
-          backgroundColor: ctrl.colors[0],
-          color: ctrl.colors[1]
-        }
-        return [
-          m('span.msg-meta', { style: metaStyle }, [
-            m('span.msg-user', ctrl.name)
-            // m('span.msg-time', ctrl.time)
-          ]),
-          m('span.msg-text', ctrl.text)
-        ]
+        var heading = ctrl.name + (ctrl.isPrivate ? ' (private)' : '')
+        return m('div.panel.panel-default',
+          { style: ctrl.isCU ? { float: 'right' } : {} },
+          [
+            m('div.panel-heading',
+              {
+                style: {
+                  backgroundColor: ctrl.colors[0],
+                  color: ctrl.colors[1]
+                }
+              },
+              heading
+            ),
+            m('div.panel-body', ctrl.text)
+          ]
+        )
       }
 
       function systemMsgBodyView(ctrl) {
         return [
-          m('span.msg-meta', ctrl.text)
+          m('div.well.well-sm', ctrl.text),
         ]
       }
 

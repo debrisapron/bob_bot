@@ -1,0 +1,2 @@
+class BobMessageSerializer < UserMessageSerializer
+end

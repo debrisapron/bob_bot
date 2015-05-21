@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # GET /api/messages
   def index
     messages = Message.since(params[:since].to_datetime).for(current_user)
-    render json: messages, each_serializer: MessageSerializer
+    render json: messages
   end
 
   # POST /api/messages

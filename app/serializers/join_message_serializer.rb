@@ -1,0 +1,2 @@
+class JoinMessageSerializer < MessageSerializer
+end
