@@ -12,8 +12,14 @@ describe User do
     token1 = user.token
     user = User.create!
     token2 = user.token
-    expect(token1).to_not be nil
+    expect(token1.length).to be >= 20
+    expect(token2.length).to be >= 20
     expect(token1).to_not eq token2
+  end
+
+  it "can retrieve a user by token" do
+    user = User.create!
+    expect(User.find_by_token(user.token)).to eql user
   end
 
   it "creates a join message after saving" do

@@ -37,8 +37,8 @@ class UserMessage < Message
 
   def notify_subscribers
     if private?
-      publish("/private_messages/#{ user.token }")
-      publish("/private_messages/#{ addressee.token }")
+      publish("/private_messages/#{ user.token }") unless user == Bob.instance
+      publish("/private_messages/#{ addressee.token }") unless addressee == Bob.instance
     else
       super
     end

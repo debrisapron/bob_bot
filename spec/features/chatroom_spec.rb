@@ -8,7 +8,7 @@ feature 'chatroom', js: true do
     expect(page).to have_content "You are signed in as #{ User.last.name }"
   end
 
-  scenario 'showing existing messages from previous ten minutes' do
+  scenario 'showing existing public messages from previous ten minutes' do
     visit '/'
     find '.msg-text', text: 'Bar'
     find '.msg-text', text: 'Baz'

@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'active_model_serializers'
-gem 'jwt'
+gem 'hashids'
 gem 'thin'
 gem 'faye-rails'
 

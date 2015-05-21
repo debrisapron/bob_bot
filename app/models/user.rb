@@ -1,4 +1,4 @@
-require 'jwt'
+require 'hashids'
 
 class User < ActiveRecord::Base
 
@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   after_create :create_join_message
 
   def self.find_by_token(token)
-    id = JWT.decode(token, SECRET)[0]['id'].to_i
-    find(id)
+    find_by(id: hashids.decode(token))
   end
 
   def name
@@ -16,10 +15,14 @@ class User < ActiveRecord::Base
   end
 
   def token
-    @token ||= JWT.encode({ id: id }, SECRET)
+    @token ||= User.hashids.encode(id)
   end
 
   private
+
+  def self.hashids
+    @hashids ||= Hashids.new(SECRET, 20)
+  end
 
   def create_join_message
     JoinMessage.create!(user: self)
