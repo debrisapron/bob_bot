@@ -38,14 +38,15 @@
   font-weight: bold;
 }
 
-.msg-wrap .panel {
-  margin-bottom: 5px;
-  width: 500px;
+.msg-wrap {
+  width: 100%;
   clear: both;
+  margin-bottom: 5px;
 }
 
 .msg-wrap .well {
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .msg-bob {
@@ -54,6 +55,113 @@
 
 .msg-private {
   font-style: italic;
+}
+
+.msg-meta {
+  width: 85px;
+  position: relative;
+  top: ;
+}
+
+.msg-name {
+  font-weight: bold;
+}
+
+.msg-other .msg-meta {
+  float: left;
+  margin-left: 5px;
+}
+
+.msg-self .msg-meta {
+  float: right;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.msg-user {
+  height: 100%;
+  width: 440px;
+}
+
+.msg-self .msg-user {
+  float: right;
+}
+
+.bubble 
+{
+position: relative;
+width: 320px;
+padding: 15px;
+background: #FFFFFF;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+border: solid 4px;
+display: inline-block;
+}
+
+.msg-self .bubble {
+  float: left;
+  margin-right: 30px;
+}
+
+.msg-other .bubble {
+  float: right;
+  margin-left: 30px;
+}
+
+.msg-other .bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 10px 25px 10px 0;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+left: -25px;
+top: 14px;
+}
+
+.msg-other .bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 28px 13px 0;
+display: block;
+width: 0;
+z-index: 0;
+left: -32px;
+top: 11px;
+}
+
+.msg-self .bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 10px 0 10px 25px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -25px;
+top: 14px;
+}
+
+.msg-self .bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 0 13px 28px;
+display: block;
+width: 0;
+z-index: 0;
+right: -32px;
+top: 11px;
 }
 
 </style>
@@ -220,10 +328,11 @@
         var isCU = msg.user.id === currentUser.id
         var name = isCU ? 'You' : msg.user.name
         return {
+          id: msg.id,
           name: name,
           time: moment(msg.created_at).format('HH:mm:ss'),
           text: msg.text,
-          colors: userColors(msg),
+          color: userColor(msg),
           type: msg.type,
           isCU: isCU,
           isPrivate: msg.is_private
@@ -231,11 +340,17 @@
       }
 
       function view(msg) {
-        var wrapClass = []
+        var wrapClass = ['clearfix']
         if(msg.type === 'BobMessage') wrapClass.push('msg-bob')
         if(msg.isPrivate) wrapClass.push('msg-private')
+        if(msg.isCU) {
+          wrapClass.push('msg-self')
+        }
+        else {
+          wrapClass.push('msg-other')          
+        }
         return m('div.msg-wrap', 
-          { class: wrapClass.join(' ') },
+          { id: 'msg-' + msg.id, class: wrapClass.join(' ') },
           [msgBodyView(msg)]
         )
       }
@@ -252,22 +367,21 @@
       }
 
       function userMsgBodyView(ctrl) {
-        var heading = ctrl.name + (ctrl.isPrivate ? ' (private)' : '')
-        return m('div.panel.panel-default',
-          { style: ctrl.isCU ? { float: 'right' } : {} },
-          [
-            m('div.panel-heading',
-              {
-                style: {
-                  backgroundColor: ctrl.colors[0],
-                  color: ctrl.colors[1]
-                }
-              },
-              heading
-            ),
-            m('div.panel-body', ctrl.text)
-          ]
+        // HACK set the border-color of the bubble :before element by inserting a CSS rule
+        document.styleSheets[0].addRule(
+          '#msg-' + ctrl.id + ' .bubble:before',
+          'border-color: transparent ' + ctrl.color
         )
+        return m('div.msg-user', [
+          m('div.msg-meta', [
+            m('div.msg-name', ctrl.name),
+            m('div.msg-time', ctrl.time),
+            m('div.msg-privacy', ctrl.isPrivate ? ' (private)' : '')
+          ]),
+          m('div.bubble', { style: { borderColor: ctrl.color } }, [
+            m('div.msg-body', ctrl.text)
+          ])
+        ])
       }
 
       function systemMsgBodyView(ctrl) {
@@ -280,14 +394,11 @@
         ]
       }
 
-      function userColors(msg) {
-        if(msg.type === 'BobMessage') return ['#444', '#fff']
+      function userColor(msg) {
+        if(msg.type === 'BobMessage') return '#CCC'
         var id = msg.user.id
-        if(id === currentUser.id) return ['#CCC', '#000']
-        return [
-          userColors[id] || (userColors[id] = newColor()),
-          '#000'
-        ]
+        if(id === currentUser.id) return '#444'
+        return userColors[id] || (userColors[id] = newColor())
       }
 
       function newColor() {
