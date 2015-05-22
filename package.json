@@ -6,5 +6,10 @@
   "scripts": {
     "prebuild": "rm -rf public/assets && mkdir public/assets",
     "build": "cp -R app/assets/stylesheets public/assets/stylesheets && cp -R app/assets/javascripts public/assets/javascripts"
+  },
+  "dependencies": {
+    "mithril": "^0.2.0",
+    "moment": "^2.10.3",
+    "randomcolor": "^0.2.0"
   }
 }
