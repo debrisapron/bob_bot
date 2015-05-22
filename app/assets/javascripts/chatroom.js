@@ -1,8 +1,7 @@
 var m = require('mithril')
-var services = require('./chatroom.services')
-var components = require('./chatroom.components')
+var chatroomServices = require('./chatroom.services')
+var chatroomComponent = require('./chatroom.component')
 
-// Bootstrap the app once we have a current user
-services.joinChat().then(function () {
-  m.mount(document.body, components)
+chatroomServices.init().then(function () {
+  m.mount(document.body, chatroomComponent)
 })
