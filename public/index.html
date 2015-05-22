@@ -153,7 +153,7 @@
     function waitForUnload() {
       window.onbeforeunload = function () {
         leaveChat()
-        return 'Leaving the page will sign you out of chat.'
+        return null
       }
     }
 
