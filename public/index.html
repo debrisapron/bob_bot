@@ -62,6 +62,7 @@
 
 (function () {
 
+  var persistedToken = window.localStorage.getItem('token')
   var currentUser
   var currentMessages = m.prop([])
 
@@ -73,12 +74,14 @@
         .request({
           method: 'POST',
           url: '/api/users',
+          config: configAuth,
           unwrapSuccess: function(response) {
             return response.user
           }
         })
         .then(function (user) {
           currentUser = user
+          if(!persistedToken) window.localStorage.setItem('token', user.token)
           sync()
           subscribeToNewMessages()
           waitForUnload()
@@ -135,7 +138,10 @@
     }
 
     function configAuth(xhr) {
-      xhr.setRequestHeader('Authorization', 'Bearer ' + currentUser.token)
+      var token = (currentUser && currentUser.token) || persistedToken
+      if(token) {
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token)
+      }
     }
 
     function subscribeToNewMessages() {

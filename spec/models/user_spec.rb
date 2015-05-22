@@ -22,9 +22,9 @@ describe User do
     expect(User.find_by_token(user.token)).to eql user
   end
 
-  it "creates a join message after saving" do
-    user = User.create!
-    expect(JoinMessage.find_by(user_id: user.id)).to_not be nil
-  end
+  # it "creates a join message after saving" do
+  #   user = User.create!
+  #   expect(JoinMessage.find_by(user_id: user.id)).to_not be nil
+  # end
 
 end

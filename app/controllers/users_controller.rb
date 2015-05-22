@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   # POST /api/users
   def create
-    user = User.create!
+    user = current_user || User.create!
+    JoinMessage.create!(user: user)
     render json: user, serializer: CurrentUserSerializer, root: :user
   end
 
