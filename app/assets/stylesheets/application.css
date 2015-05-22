@@ -1,15 +1,156 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.chat-wrap {
+  width: 700px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+.msg-list-wrap {
+  background-color: #EEE;
+  padding: 5px;
+  width: 100%;
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.msg-list {
+  width: 100%;
+}
+
+.msg-box {
+  width: 100%;
+  margin-bottom: 0;
+  resize: none;
+  font-size: 1.2em;
+}
+
+.welcome {
+  font-weight: bold;
+}
+
+.msg-wrap {
+  width: 100%;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.msg-wrap .well {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.msg-bob {
+  font-family: monospace;
+}
+
+.msg-private {
+  font-style: italic;
+}
+
+.msg-meta {
+  width: 85px;
+  position: relative;
+  top: ;
+}
+
+.msg-name {
+  font-weight: bold;
+}
+
+.msg-other .msg-meta {
+  float: left;
+  margin-left: 5px;
+}
+
+.msg-self .msg-meta {
+  float: right;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.msg-user {
+  height: 100%;
+  width: 440px;
+}
+
+.msg-self .msg-user {
+  float: right;
+}
+
+.bubble 
+{
+position: relative;
+width: 320px;
+padding: 15px;
+background: #FFFFFF;
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+border: solid 4px;
+display: inline-block;
+}
+
+.msg-self .bubble {
+  float: left;
+  margin-right: 30px;
+}
+
+.msg-other .bubble {
+  float: right;
+  margin-left: 30px;
+}
+
+.msg-other .bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 10px 25px 10px 0;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+left: -25px;
+top: 14px;
+}
+
+.msg-other .bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 28px 13px 0;
+display: block;
+width: 0;
+z-index: 0;
+left: -32px;
+top: 11px;
+}
+
+.msg-self .bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 10px 0 10px 25px;
+border-color: transparent #FFFFFF;
+display: block;
+width: 0;
+z-index: 1;
+right: -25px;
+top: 14px;
+}
+
+.msg-self .bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 13px 0 13px 28px;
+display: block;
+width: 0;
+z-index: 0;
+right: -32px;
+top: 11px;
+}

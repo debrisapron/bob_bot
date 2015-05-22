@@ -1,0 +1,10 @@
+{
+  "name": "bob_bot",
+  "version": "1.0.0",
+  "description": "A (very) simple chatbot coded for the Everchron coding challenge.",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rm -rf public/assets && mkdir public/assets",
+    "build": "cp -R app/assets/stylesheets public/assets/stylesheets && cp -R app/assets/javascripts public/assets/javascripts"
+  }
+}
