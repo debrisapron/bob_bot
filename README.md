@@ -12,6 +12,7 @@ Prerequisites: Ruby v2.2.2, Bundler, Node/iojs, npm & a running PostgreSQL serve
 
 ```
 git clone https://github.com/debrisapron/bob_bot.git
+cd bob_bot
 bundle
 bundle exec rake db:setup
 npm install
