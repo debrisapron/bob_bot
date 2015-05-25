@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf public/assets && mkdir -p public/assets/javascripts",
-    "build": "cp -R app/assets/stylesheets public/assets/stylesheets && browserify app/assets/javascripts/application.js | uglifyjs > public/assets/javascripts/application.js",
+    "build": "cp -R app/assets/stylesheets public/assets/stylesheets && node_modules/.bin/browserify app/assets/javascripts/application.js | node_modules/.bin/uglifyjs --compress --mangle > public/assets/javascripts/application.js",
     "prenightwatch": "bundle exec rake db:test:prepare && bundle exec rake db:seed RAILS_ENV=test",
     "nightwatch": "./node_modules/nightwatch/bin/nightwatch"
   },
@@ -16,8 +16,10 @@
     "randomcolor": "^0.2.0"
   },
   "devDependencies": {
+    "browserify": "^10.2.1",
     "chromedriver": "^2.15.1",
     "nightwatch": "^0.6.12",
-    "selenium-server": "^2.45.0"
+    "selenium-server": "^2.45.0",
+    "uglify-js": "^2.4.23"
   }
 }

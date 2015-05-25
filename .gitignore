@@ -13,3 +13,4 @@
 /tmp
 /node_modules
 /tests_output
+selenium-debug.log
