@@ -5,9 +5,9 @@
 
   <testsuite name="chatroom_tests"
     errors="0" failures="0" hostname="" id="" package="chatroom_tests" skipped="0"
-    tests="10" time="15.17" timestamp="Mon, 25 May 2015 00:02:12 GMT">
+    tests="10" time="11.28" timestamp="Mon, 25 May 2015 00:14:43 GMT">
   
-    <testcase name="see welcome message and join notification" time="9.276" assertions="4">
+    <testcase name="see welcome message and join notification" time="5.424" assertions="4">
 
     
 
@@ -18,7 +18,7 @@
     
     </testcase>
   
-    <testcase name="post a public message and be told &quot;whatever&quot; by Bob" time="0.7810" assertions="4">
+    <testcase name="post a public message and be told &quot;whatever&quot; by Bob" time="0.8180" assertions="4">
 
     
 
@@ -29,7 +29,7 @@
     
     </testcase>
   
-    <testcase name="post a public all-caps message and get told to chill out by Bob" time="0.7450" assertions="4">
+    <testcase name="post a public all-caps message and get told to chill out by Bob" time="0.7730" assertions="4">
 
     
 
@@ -40,7 +40,7 @@
     
     </testcase>
   
-    <testcase name="post a public question and get &quot;Sure.&quot; reply from Bob" time="0.7590" assertions="4">
+    <testcase name="post a public question and get &quot;Sure.&quot; reply from Bob" time="0.7790" assertions="4">
 
     
 
@@ -51,7 +51,7 @@
     
     </testcase>
   
-    <testcase name="post an empty message and get rebuked by Bob" time="0.6520" assertions="3">
+    <testcase name="post an empty message and get rebuked by Bob" time="0.6560" assertions="3">
 
     
 
@@ -60,51 +60,7 @@
     
     </testcase>
   
-    <testcase name="post a private message to bob and get a private response" time="0.7490" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="open chatroom in new window as user B" time="0.4920" assertions="0">
-    </testcase>
-  
-    <testcase name="as user B see public messages betwen user A and Bob, and own join notification" time="0.7340" assertions="19">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <testcase name="post a private message to bob and get a private response" time="0.7960" assertions="4">
 
     
 
@@ -115,7 +71,40 @@
     
     </testcase>
   
-    <testcase name="as user B post a public message and Bob responds" time="0.7630" assertions="4">
+    <testcase name="open chatroom in new window as user B" time="0.3240" assertions="0">
+    </testcase>
+  
+    <testcase name="as user B see public messages betwen user A and Bob, and own join notification" time="0.7080" assertions="19">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
@@ -126,7 +115,18 @@
     
     </testcase>
   
-    <testcase name="user A sees a join notification for user B and their public messages" time="0.2190" assertions="6">
+    <testcase name="as user B post a public message and Bob responds" time="0.7790" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="user A sees a join notification for user B and their public messages" time="0.2200" assertions="6">
 
     
 

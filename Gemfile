@@ -8,12 +8,7 @@ gem 'thin'
 gem 'faye'
 
 group :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'rspec-rails'
-  # gem 'capybara'
-  # gem 'poltergeist'
-  # gem 'database_cleaner'
-  # gem 'em-rspec'
+  gem 'spring', require: false
+  gem 'rspec-rails', require: false
+  gem 'em-rspec', require: false
 end

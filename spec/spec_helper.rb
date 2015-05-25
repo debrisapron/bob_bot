@@ -75,26 +75,6 @@ RSpec.configure do |config|
   config.include SpecHelpers
   config.include JsonHelpers, type: :request
 
-  # The in-process Faye server does not play nicely with Capybara
-  # so we spin up an out-of-process server instead and hack our
-  # javascript to point at it
-  # pid = nil
-  # config.before(:suite) do
-  #   Rails.logger.info "Spawning out-of-process Faye server"
-  #   pid = spawn('rackup faye.ru -E production')
-  #   js_file = 'public/assets/javascripts/application.js'
-  #   hacked_text = File
-  #     .read(js_file)
-  #     .gsub('"/faye"', '"//localhost:9292/faye"')
-  #   File.open(js_file, 'w') { |f| f.puts hacked_text }
-  # end
-  # config.after(:suite) do
-  #   Rails.logger.info "Killing out-of-process Faye server"
-  #   Process.kill("TERM", pid) if pid
-  #   # Unhack
-  #   `npm run build`
-  # end
-
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

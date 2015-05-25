@@ -20,12 +20,10 @@ class Message < ActiveRecord::Base
   protected
 
   def self.faye_client
-    p BobBot::Application.config.faye_url
     @faye_client ||= Faye::Client.new(BobBot::Application.config.faye_url)
   end
 
   def publish(channel)
-    p "Publishing on #{ channel }"
     Message.faye_client.publish(channel, {})
   end
 
