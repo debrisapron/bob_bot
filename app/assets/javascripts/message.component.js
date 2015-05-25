@@ -8,11 +8,12 @@ var userColors = {}
 function controller(msg) {
   var isCU = msg.user.id === userServices.currentUser().id
   var name = isCU ? 'You' : msg.user.name
+  var text = (msg.text && msg.text.trim().length) ? msg.text : m.trust('&nbsp;')
   return {
     id: msg.id,
     name: name,
     time: moment(msg.created_at).format('HH:mm:ss'),
-    text: msg.text,
+    text: text,
     color: userColor(msg, isCU),
     type: msg.type,
     isCU: isCU,
