@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
             failures="0"
-            tests="10">
+            tests="11">
 
   <testsuite name="chatroom_tests"
     errors="0" failures="0" hostname="" id="" package="chatroom_tests" skipped="0"
-    tests="10" time="11.28" timestamp="Mon, 25 May 2015 00:14:43 GMT">
+    tests="11" time="16.85" timestamp="Mon, 25 May 2015 00:56:22 GMT">
   
-    <testcase name="see welcome message and join notification" time="5.424" assertions="4">
+    <testcase name="see welcome message and join notification" time="8.455" assertions="4">
 
     
 
@@ -18,85 +18,7 @@
     
     </testcase>
   
-    <testcase name="post a public message and be told &quot;whatever&quot; by Bob" time="0.8180" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="post a public all-caps message and get told to chill out by Bob" time="0.7730" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="post a public question and get &quot;Sure.&quot; reply from Bob" time="0.7790" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="post an empty message and get rebuked by Bob" time="0.6560" assertions="3">
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="post a private message to bob and get a private response" time="0.7960" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="open chatroom in new window as user B" time="0.3240" assertions="0">
-    </testcase>
-  
-    <testcase name="as user B see public messages betwen user A and Bob, and own join notification" time="0.7080" assertions="19">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
+    <testcase name="post a public message and be told &quot;whatever&quot; by Bob" time="0.9570" assertions="8">
 
     
 
@@ -115,7 +37,15 @@
     
     </testcase>
   
-    <testcase name="as user B post a public message and Bob responds" time="0.7790" assertions="4">
+    <testcase name="post a public all-caps message and get told to chill out by Bob" time="0.9200" assertions="8">
+
+    
+
+    
+
+    
+
+    
 
     
 
@@ -126,7 +56,196 @@
     
     </testcase>
   
-    <testcase name="user A sees a join notification for user B and their public messages" time="0.2200" assertions="6">
+    <testcase name="post a public question and get &quot;Sure.&quot; reply from Bob" time="0.9020" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="post an empty message and get rebuked by Bob" time="0.7600" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="post a private message to bob and get a private response" time="0.9500" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="open chatroom in new window as user B" time="0.5060" assertions="0">
+    </testcase>
+  
+    <testcase name="as user B see public messages betwen user A and Bob, and own join notification" time="1.339" assertions="34">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="as user B post a public message and Bob responds" time="0.9100" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="as user B post a private message for user A without response from Bob" time="0.5840" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="user A sees a join notification for user B and their public &amp; private messages" time="0.5690" assertions="18">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
     
 
