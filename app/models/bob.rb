@@ -2,8 +2,8 @@ class Bob < User
 
   RULES = {
     [/^[^\p{Ll}]*$/, /\p{Lu}+/] => 'Woah, chill out!',
-    [/\?$/]                 => 'Sure.',
-    [/^\s*$/]               => 'Fine. Be that way!'
+    [/\?$/]                     => 'Sure.',
+    [/^\s*$/]                   => 'Fine. Be that way!'
   }
 
   def self.respond_to(msg)
