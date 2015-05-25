@@ -1,7 +1,7 @@
 class Bob < User
 
   RULES = {
-    [/^[^a-z]*$/, /[A-Z]+/] => 'Woah, chill out!',
+    [/^[^\p{Ll}]*$/, /\p{Lu}+/] => 'Woah, chill out!',
     [/\?$/]                 => 'Sure.',
     [/^\s*$/]               => 'Fine. Be that way!'
   }
