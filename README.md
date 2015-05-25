@@ -41,7 +41,7 @@ The rails app is basically just a JSON API, serving the SPA out of its public di
 
 ### Faye
 
-The realtime communication is achieved with Faye running as an in-process Rack middleware and communicating with the SPA via websockets. You can see where it's inserted in the middleware chain in `config/application.rb`. I would have liked to have exercised Faye in my request tests, however that proved technically impossible so I just relied on the browser tests. You can see where I publish the actual Faye events in `app/models/messages/message.rb` and where I subscribe to them in `app/assets/javascripts/message.services.js'.
+The realtime communication is achieved with Faye running as an in-process Rack middleware and communicating with the SPA via websockets. You can see where it's inserted in the middleware chain in `config/application.rb`. I would have liked to have exercised Faye in my request tests, however that proved technically impossible so I just relied on the browser tests. You can see where I publish the actual Faye events in `app/models/messages/message.rb` and where I subscribe to them in `app/assets/javascripts/message.services.js`.
 
 ### The SPA
 
