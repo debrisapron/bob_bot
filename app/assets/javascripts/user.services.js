@@ -1,13 +1,15 @@
 var m = require('mithril')
 var moment = require('moment')
 
-var persistedToken = window.localStorage.getItem('token')
+var persistedToken = window.localStorage && window.localStorage.getItem('token')
 var currentUser
 
 function init() {
   return joinChat().then(function (user) {
     currentUser = user
-    if(!persistedToken) window.localStorage.setItem('token', user.token)
+    if(!persistedToken && window.localStorage) {
+      window.localStorage.setItem('token', user.token)
+    }
     waitForUnload()
     return user
   })

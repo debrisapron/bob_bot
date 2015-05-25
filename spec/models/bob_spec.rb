@@ -18,7 +18,7 @@ describe Bob do
     expect(resp).to eq 'Woah, chill out!'
   end
 
-  it "responds to all-caps questions with 'Whoah, chill out! Sure.'" do
+  it "responds to all-caps questions with 'Woah, chill out! Sure.'" do
     resp = Bob.respond_to('WILL IT BLEND?')
     expect(resp).to eq 'Woah, chill out! Sure.'
     resp = Bob.respond_to('WILL IT F1#%2@G BLEND?')

@@ -1,0 +1,294 @@
+17:02:12.528 INFO - Launching a standalone server
+Setting system property webdriver.chrome.driver to node_modules/chromedriver/lib/chromedriver/chromedriver
+17:02:12.561 INFO - Java: Apple Inc. 20.65-b04-462
+17:02:12.561 INFO - OS: Mac OS X 10.8.5 x86_64
+17:02:12.570 INFO - v2.45.0, with Core v2.45.0. Built from revision 5017cb8
+17:02:12.626 INFO - Default driver org.openqa.selenium.ie.InternetExplorerDriver registration is skipped: registration capabilities Capabilities [{platform=WINDOWS, ensureCleanSession=true, browserName=internet explorer, version=}] does not match with current platform: MAC
+17:02:12.672 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+17:02:12.672 INFO - Version Jetty/5.1.x
+17:02:12.673 INFO - Started HttpContext[/selenium-server/driver,/selenium-server/driver]
+17:02:12.674 INFO - Started HttpContext[/selenium-server,/selenium-server]
+17:02:12.674 INFO - Started HttpContext[/,/]
+17:02:12.709 INFO - Started org.openqa.jetty.jetty.servlet.ServletHandler@3dbbd23f
+17:02:12.709 INFO - Started HttpContext[/wd,/wd]
+17:02:12.713 INFO - Started SocketListener on 0.0.0.0:4444
+17:02:12.713 INFO - Started org.openqa.jetty.jetty.Server@35c0e45a
+17:02:12.928 INFO - Executing: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=Chatroom Tests, chromeOptions={args=[disable-local-storage]}}]])
+17:02:12.938 INFO - Creating a new session for Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=Chatroom Tests, chromeOptions={args=[disable-local-storage]}}]
+Starting ChromeDriver 2.15.322455 (ae8db840dac8d0c453355d3d922c91adfb61df8f) on port 8211
+Only local connections are allowed.
+17:02:20.142 INFO - Done: [new session: Capabilities [{platform=ANY, acceptSslCerts=true, javascriptEnabled=true, browserName=chrome, name=Chatroom Tests, chromeOptions={args=[disable-local-storage]}}]]
+17:02:20.159 INFO - Executing: [get: http://localhost:3001])
+17:02:21.330 INFO - Done: [get: http://localhost:3001]
+17:02:21.340 INFO - Executing: [find elements: By.cssSelector: .welcome])
+17:02:21.361 INFO - Done: [find elements: By.cssSelector: .welcome]
+17:02:21.867 INFO - Executing: [find elements: By.cssSelector: .welcome])
+17:02:21.895 INFO - Done: [find elements: By.cssSelector: .welcome]
+17:02:21.899 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .welcome]])
+17:02:21.914 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .welcome]]
+17:02:21.921 INFO - Executing: [find element: By.cssSelector: .welcome])
+17:02:21.934 INFO - Done: [find element: By.cssSelector: .welcome]
+17:02:21.938 INFO - Executing: [get text: 0 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .welcome]])
+17:02:21.954 INFO - Done: [get text: 0 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .welcome]]
+17:02:21.962 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(1)])
+17:02:21.975 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(1)]
+17:02:21.978 INFO - Executing: [is displayed: 1 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]])
+17:02:21.991 INFO - Done: [is displayed: 1 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]]
+17:02:21.996 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(1)])
+17:02:22.009 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(1)]
+17:02:22.012 INFO - Executing: [get text: 1 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]])
+17:02:22.029 INFO - Done: [get text: 1 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]]
+17:02:22.041 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:22.055 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:22.059 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [f, o, o,  , b, a, r,  , b, a, z, 
+]])
+17:02:22.138 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [f, o, o,  , b, a, r,  , b, a, z, 
+]]
+17:02:22.143 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(2)])
+17:02:22.156 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(2)]
+17:02:22.663 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(2)])
+17:02:22.680 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(2)]
+17:02:22.683 INFO - Executing: [is displayed: 3 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]])
+17:02:22.696 INFO - Done: [is displayed: 3 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]]
+17:02:22.701 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(2)])
+17:02:22.716 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(2)]
+17:02:22.719 INFO - Executing: [get text: 3 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]])
+17:02:22.741 INFO - Done: [get text: 3 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]]
+17:02:22.746 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(3)])
+17:02:22.759 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(3)]
+17:02:22.763 INFO - Executing: [is displayed: 4 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]])
+17:02:22.774 INFO - Done: [is displayed: 4 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]]
+17:02:22.779 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(3)])
+17:02:22.792 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(3)]
+17:02:22.795 INFO - Executing: [get text: 4 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]])
+17:02:22.816 INFO - Done: [get text: 4 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]]
+17:02:22.821 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:22.836 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:22.840 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [O, M, G, R, O, F, L, 
+]])
+17:02:22.898 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [O, M, G, R, O, F, L, 
+]]
+17:02:22.902 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(4)])
+17:02:22.914 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(4)]
+17:02:23.420 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(4)])
+17:02:23.428 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(4)]
+17:02:23.431 INFO - Executing: [is displayed: 5 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]])
+17:02:23.443 INFO - Done: [is displayed: 5 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]]
+17:02:23.447 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(4)])
+17:02:23.460 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(4)]
+17:02:23.464 INFO - Executing: [get text: 5 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]])
+17:02:23.485 INFO - Done: [get text: 5 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]]
+17:02:23.490 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(5)])
+17:02:23.504 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(5)]
+17:02:23.507 INFO - Executing: [is displayed: 6 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]])
+17:02:23.519 INFO - Done: [is displayed: 6 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]]
+17:02:23.523 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(5)])
+17:02:23.536 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(5)]
+17:02:23.539 INFO - Executing: [get text: 6 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]])
+17:02:23.561 INFO - Done: [get text: 6 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]]
+17:02:23.567 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:23.580 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:23.584 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [w, i, l, l,  , i, t,  , b, l, e, n, d, ?, 
+]])
+17:02:23.653 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [w, i, l, l,  , i, t,  , b, l, e, n, d, ?, 
+]]
+17:02:23.656 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(6)])
+17:02:23.669 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(6)]
+17:02:24.175 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(6)])
+17:02:24.184 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(6)]
+17:02:24.188 INFO - Executing: [is displayed: 7 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]])
+17:02:24.199 INFO - Done: [is displayed: 7 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]]
+17:02:24.203 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(6)])
+17:02:24.216 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(6)]
+17:02:24.219 INFO - Executing: [get text: 7 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]])
+17:02:24.244 INFO - Done: [get text: 7 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]]
+17:02:24.247 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(7)])
+17:02:24.263 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(7)]
+17:02:24.266 INFO - Executing: [is displayed: 8 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]])
+17:02:24.278 INFO - Done: [is displayed: 8 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]]
+17:02:24.283 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(7)])
+17:02:24.297 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(7)]
+17:02:24.299 INFO - Executing: [get text: 8 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]])
+17:02:24.321 INFO - Done: [get text: 8 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]]
+17:02:24.326 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:24.335 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:24.339 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [
+]])
+17:02:24.356 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [
+]]
+17:02:24.360 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(8)])
+17:02:24.372 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(8)]
+17:02:24.877 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(8)])
+17:02:24.887 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(8)]
+17:02:24.890 INFO - Executing: [is displayed: 9 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(8)]])
+17:02:24.903 INFO - Done: [is displayed: 9 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(8)]]
+17:02:24.906 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(9)])
+17:02:24.920 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(9)]
+17:02:24.923 INFO - Executing: [is displayed: 10 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]])
+17:02:24.934 INFO - Done: [is displayed: 10 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]]
+17:02:24.938 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(9)])
+17:02:24.951 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(9)]
+17:02:24.953 INFO - Executing: [get text: 10 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]])
+17:02:24.974 INFO - Done: [get text: 10 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]]
+17:02:24.978 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:24.986 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:24.989 INFO - Executing: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [@, b, o, b,  , a, r, e,  , w, e,  , f, r, i, e, n, d, s, ?, 
+]])
+17:02:25.053 INFO - Done: [send keys: 2 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [@, b, o, b,  , a, r, e,  , w, e,  , f, r, i, e, n, d, s, ?, 
+]]
+17:02:25.057 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(10)])
+17:02:25.070 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(10)]
+17:02:25.576 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(10)])
+17:02:25.590 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(10)]
+17:02:25.593 INFO - Executing: [is displayed: 11 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]])
+17:02:25.604 INFO - Done: [is displayed: 11 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]]
+17:02:25.608 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(10)])
+17:02:25.623 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(10)]
+17:02:25.626 INFO - Executing: [get text: 11 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]])
+17:02:25.646 INFO - Done: [get text: 11 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]]
+17:02:25.650 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(11)])
+17:02:25.663 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(11)]
+17:02:25.666 INFO - Executing: [is displayed: 12 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]])
+17:02:25.678 INFO - Done: [is displayed: 12 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]]
+17:02:25.683 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(11)])
+17:02:25.696 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(11)]
+17:02:25.700 INFO - Executing: [get text: 12 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]])
+17:02:25.722 INFO - Done: [get text: 12 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]]
+17:02:25.728 INFO - Executing: [execute script: var passedArgs = Array.prototype.slice.call(arguments,0); return function () {
+        window.open('http://localhost:3001', 'userB', 'height=700,width=600')
+      }.apply(window, passedArgs);, []])
+17:02:26.021 INFO - Done: [execute script: var passedArgs = Array.prototype.slice.call(arguments,0); return function () {
+        window.open('http://localhost:3001', 'userB', 'height=700,width=600')
+      }.apply(window, passedArgs);, []]
+17:02:26.025 INFO - Executing: [get window handles])
+17:02:26.214 INFO - Done: [get window handles]
+17:02:26.221 INFO - Executing: [switch to window: CDwindow-7EA0795D-B377-4C1D-BDD4-9C115FFA21EA])
+17:02:26.226 INFO - Done: [switch to window: CDwindow-7EA0795D-B377-4C1D-BDD4-9C115FFA21EA]
+17:02:26.230 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(1)])
+17:02:26.257 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(1)]
+17:02:26.260 INFO - Executing: [is displayed: 13 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]])
+17:02:26.274 INFO - Done: [is displayed: 13 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]]
+17:02:26.278 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(1)])
+17:02:26.292 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(1)]
+17:02:26.294 INFO - Executing: [get text: 13 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]])
+17:02:26.310 INFO - Done: [get text: 13 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(1)]]
+17:02:26.314 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(2)])
+17:02:26.328 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(2)]
+17:02:26.341 INFO - Executing: [is displayed: 14 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]])
+17:02:26.360 INFO - Done: [is displayed: 14 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]]
+17:02:26.363 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(2)])
+17:02:26.377 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(2)]
+17:02:26.380 INFO - Executing: [get text: 14 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]])
+17:02:26.403 INFO - Done: [get text: 14 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(2)]]
+17:02:26.409 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(3)])
+17:02:26.423 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(3)]
+17:02:26.427 INFO - Executing: [is displayed: 15 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]])
+17:02:26.438 INFO - Done: [is displayed: 15 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]]
+17:02:26.442 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(3)])
+17:02:26.459 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(3)]
+17:02:26.462 INFO - Executing: [get text: 15 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]])
+17:02:26.484 INFO - Done: [get text: 15 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(3)]]
+17:02:26.487 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(4)])
+17:02:26.500 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(4)]
+17:02:26.503 INFO - Executing: [is displayed: 16 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]])
+17:02:26.515 INFO - Done: [is displayed: 16 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]]
+17:02:26.519 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(4)])
+17:02:26.532 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(4)]
+17:02:26.535 INFO - Executing: [get text: 16 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]])
+17:02:26.556 INFO - Done: [get text: 16 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(4)]]
+17:02:26.559 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(5)])
+17:02:26.577 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(5)]
+17:02:26.580 INFO - Executing: [is displayed: 17 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]])
+17:02:26.593 INFO - Done: [is displayed: 17 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]]
+17:02:26.597 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(5)])
+17:02:26.611 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(5)]
+17:02:26.613 INFO - Executing: [get text: 17 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]])
+17:02:26.634 INFO - Done: [get text: 17 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(5)]]
+17:02:26.638 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(6)])
+17:02:26.658 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(6)]
+17:02:26.660 INFO - Executing: [is displayed: 18 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]])
+17:02:26.673 INFO - Done: [is displayed: 18 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]]
+17:02:26.676 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(6)])
+17:02:26.689 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(6)]
+17:02:26.691 INFO - Executing: [get text: 18 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]])
+17:02:26.715 INFO - Done: [get text: 18 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(6)]]
+17:02:26.719 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(7)])
+17:02:26.732 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(7)]
+17:02:26.735 INFO - Executing: [is displayed: 19 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]])
+17:02:26.746 INFO - Done: [is displayed: 19 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]]
+17:02:26.749 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(7)])
+17:02:26.762 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(7)]
+17:02:26.764 INFO - Executing: [get text: 19 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]])
+17:02:26.784 INFO - Done: [get text: 19 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(7)]]
+17:02:26.787 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(8)])
+17:02:26.800 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(8)]
+17:02:26.803 INFO - Executing: [is displayed: 20 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(8)]])
+17:02:26.814 INFO - Done: [is displayed: 20 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(8)]]
+17:02:26.817 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(9)])
+17:02:26.830 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(9)]
+17:02:26.833 INFO - Executing: [is displayed: 21 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]])
+17:02:26.845 INFO - Done: [is displayed: 21 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]]
+17:02:26.849 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(9)])
+17:02:26.862 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(9)]
+17:02:26.864 INFO - Executing: [get text: 21 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]])
+17:02:26.885 INFO - Done: [get text: 21 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(9)]]
+17:02:26.888 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(10)])
+17:02:26.902 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(10)]
+17:02:26.904 INFO - Executing: [is displayed: 22 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]])
+17:02:26.916 INFO - Done: [is displayed: 22 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]]
+17:02:26.919 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(10)])
+17:02:26.932 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(10)]
+17:02:26.934 INFO - Executing: [get text: 22 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]])
+17:02:26.950 INFO - Done: [get text: 22 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(10)]]
+17:02:26.954 INFO - Executing: [find element: By.cssSelector: textarea])
+17:02:26.967 INFO - Done: [find element: By.cssSelector: textarea]
+17:02:26.971 INFO - Executing: [send keys: 23 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [I,  , f, e, e, l,  , l, i, k, e,  , c, h, i, c, k, e, n,  , t, o, n, i, g, h, t, 
+]])
+17:02:27.063 INFO - Done: [send keys: 23 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: textarea], [I,  , f, e, e, l,  , l, i, k, e,  , c, h, i, c, k, e, n,  , t, o, n, i, g, h, t, 
+]]
+17:02:27.066 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(11)])
+17:02:27.079 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(11)]
+17:02:27.582 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(11)])
+17:02:27.590 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(11)]
+17:02:27.592 INFO - Executing: [is displayed: 24 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]])
+17:02:27.604 INFO - Done: [is displayed: 24 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]]
+17:02:27.607 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(11)])
+17:02:27.620 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(11)]
+17:02:27.622 INFO - Executing: [get text: 24 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]])
+17:02:27.642 INFO - Done: [get text: 24 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(11)]]
+17:02:27.645 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(12)])
+17:02:27.659 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(12)]
+17:02:27.661 INFO - Executing: [is displayed: 25 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]])
+17:02:27.674 INFO - Done: [is displayed: 25 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]]
+17:02:27.677 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(12)])
+17:02:27.690 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(12)]
+17:02:27.692 INFO - Executing: [get text: 25 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]])
+17:02:27.713 INFO - Done: [get text: 25 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]]
+17:02:27.717 INFO - Executing: [switch to window: CDwindow-3FB8D4CE-265B-42FA-90CB-FFD00EBA4513])
+17:02:27.721 INFO - Done: [switch to window: CDwindow-3FB8D4CE-265B-42FA-90CB-FFD00EBA4513]
+17:02:27.723 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(12)])
+17:02:27.737 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(12)]
+17:02:27.740 INFO - Executing: [is displayed: 26 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]])
+17:02:27.751 INFO - Done: [is displayed: 26 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]]
+17:02:27.754 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(12)])
+17:02:27.770 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(12)]
+17:02:27.772 INFO - Executing: [get text: 26 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]])
+17:02:27.790 INFO - Done: [get text: 26 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(12)]]
+17:02:27.793 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(13)])
+17:02:27.806 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(13)]
+17:02:27.809 INFO - Executing: [is displayed: 27 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(13)]])
+17:02:27.821 INFO - Done: [is displayed: 27 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(13)]]
+17:02:27.825 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(13)])
+17:02:27.838 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(13)]
+17:02:27.840 INFO - Executing: [get text: 27 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(13)]])
+17:02:27.862 INFO - Done: [get text: 27 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(13)]]
+17:02:27.865 INFO - Executing: [find elements: By.cssSelector: .msg-wrap:nth-child(14)])
+17:02:27.879 INFO - Done: [find elements: By.cssSelector: .msg-wrap:nth-child(14)]
+17:02:27.882 INFO - Executing: [is displayed: 28 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(14)]])
+17:02:27.894 INFO - Done: [is displayed: 28 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(14)]]
+17:02:27.897 INFO - Executing: [find element: By.cssSelector: .msg-wrap:nth-child(14)])
+17:02:27.910 INFO - Done: [find element: By.cssSelector: .msg-wrap:nth-child(14)]
+17:02:27.912 INFO - Executing: [get text: 28 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(14)]])
+17:02:27.932 INFO - Done: [get text: 28 [[ChromeDriver: chrome on MAC (254ac4e62d3fa574e1be5a06445e6bce)] -> css selector: .msg-wrap:nth-child(14)]]
+17:02:27.936 INFO - Executing: [delete session: 68cd6a38-5d36-4ec3-8ba2-527eaf631483])
+17:02:28.817 INFO - Done: [delete session: 68cd6a38-5d36-4ec3-8ba2-527eaf631483]

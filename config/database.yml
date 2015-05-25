@@ -13,6 +13,6 @@ test:
 
 production:
   <<: *default
-  database: bob_bot_production
-  username: bob_bot
-  password: <%= ENV['BOB_BOT_DATABASE_PASSWORD'] %>
+  database: bob_bot_development
+  # username: bob_bot
+  # password: <%= ENV['BOB_BOT_DATABASE_PASSWORD'] %>

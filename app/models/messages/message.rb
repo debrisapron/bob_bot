@@ -20,12 +20,12 @@ class Message < ActiveRecord::Base
   protected
 
   def self.faye_client
-    # WORKAROUND Not sure why I have to do this dance for a simple publish,
-    # but the faye-rails docs are really unhelpful and I'm tired
-    @faye_client ||= Faye::Client.new('http://localhost:3000/faye')
+    p BobBot::Application.config.faye_url
+    @faye_client ||= Faye::Client.new(BobBot::Application.config.faye_url)
   end
 
   def publish(channel)
+    p "Publishing on #{ channel }"
     Message.faye_client.publish(channel, {})
   end
 

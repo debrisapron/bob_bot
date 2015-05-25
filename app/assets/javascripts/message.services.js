@@ -1,5 +1,6 @@
 var m = require('mithril')
 var moment = require('moment')
+var Faye = require('faye/browser/faye-browser')
 var userServices = require('./user.services')
 
 var currentMessages = m.prop([])

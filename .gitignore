@@ -11,5 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
-/public/assets
+/public/test
 /node_modules

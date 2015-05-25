@@ -4,12 +4,20 @@
   "description": "A (very) simple chatbot coded for the Everchron coding challenge.",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm -rf public/assets && mkdir public/assets && mkdir public/assets/javascripts",
-    "build": "cp -R app/assets/stylesheets public/assets/stylesheets && browserify app/assets/javascripts/application.js | uglifyjs > public/assets/javascripts/application.js"
+    "prebuild": "rm -rf public/assets && mkdir -p public/assets/javascripts",
+    "build": "cp -R app/assets/stylesheets public/assets/stylesheets && browserify app/assets/javascripts/application.js | uglifyjs > public/assets/javascripts/application.js",
+    "prenightwatch": "bundle exec rake db:test:prepare && bundle exec rake db:seed RAILS_ENV=test",
+    "nightwatch": "./node_modules/nightwatch/bin/nightwatch"
   },
   "dependencies": {
+    "faye": "^1.1.1",
     "mithril": "^0.2.0",
     "moment": "^2.10.3",
     "randomcolor": "^0.2.0"
+  },
+  "devDependencies": {
+    "chromedriver": "^2.15.1",
+    "nightwatch": "^0.6.12",
+    "selenium-server": "^2.45.0"
   }
 }
