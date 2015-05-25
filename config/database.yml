@@ -13,6 +13,7 @@ test:
 
 production:
   <<: *default
+  host: localhost
   database: bob_bot_production
   username: bob_bot
   password: bob_bot
