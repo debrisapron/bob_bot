@@ -2,6 +2,15 @@ require "rails_helper"
 
 describe Bob do
 
+  it "must only ever have one instance with id 0" do
+    Message.destroy_all(user: Bob)
+    Message.destroy_all(addressee_id: Bob.id)
+    Bob.destroy_all
+    Bob.create!
+    expect(Bob.id).to eq 0
+    expect{Bob.create!}.to raise_error
+  end
+
   it "responds to a question with 'Sure.'" do
     resp = Bob.respond_to('Will it blend?')
     expect(resp).to eq 'Sure.'

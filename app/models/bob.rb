@@ -25,6 +25,12 @@ class Bob < User
     instance.id
   end
 
+  def initialize(*args)
+    # Only create a new Bob if there isn't already one
+    fail("Initializing Bob failed because Bob already exists") if Bob.exists?
+    super(id: 0)
+  end
+
   def name
     'Bob'
   end
