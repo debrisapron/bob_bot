@@ -7,6 +7,7 @@ class Bob < User
   }
 
   def self.respond_to(msg)
+    msg ||= ''
     matching_rules = RULES.select do |patts, resp|
       patts.all? { |patt| msg =~ patt }
     end

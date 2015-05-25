@@ -34,7 +34,9 @@ describe Bob do
     expect(resp).to eq 'Woah, chill out! Sure.'
   end
 
-  it "responds to empty or all-whitespace messages with 'Fine. Be that way!'" do
+  it "responds to nil, empty or all-whitespace messages with 'Fine. Be that way!'" do
+    resp = Bob.respond_to(nil)
+    expect(resp).to eq 'Fine. Be that way!'
     resp = Bob.respond_to('')
     expect(resp).to eq 'Fine. Be that way!'
     resp = Bob.respond_to('   ')
