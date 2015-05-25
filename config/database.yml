@@ -14,5 +14,5 @@ test:
 production:
   <<: *default
   database: bob_bot_development
-  # username: bob_bot
-  # password: <%= ENV['BOB_BOT_DATABASE_PASSWORD'] %>
+  username: bob_bot
+  password: bob_bot
