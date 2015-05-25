@@ -1,7 +1,7 @@
 {
   "name": "bob_bot",
   "version": "1.0.0",
-  "description": "A (very) simple chatbot coded for the Everchron coding challenge.",
+  "description": "A real-time chatroom with a simple reply bot for the Everchron code challenge",
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf public/assets && mkdir -p public/assets/javascripts",
