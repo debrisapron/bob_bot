@@ -30,7 +30,7 @@ describe Message do
 
     it "prompts a response from Bob" do
       message = UserMessage.create!(user: test_user, text: 'R U THERE BOB?')
-      expect(BobMessage.find_by(text: 'Woah, chill out! Sure.')).to_not be nil
+      expect(BobMessage.where(text: 'Woah, chill out! Sure.')).to exist
     end
 
     context "PM to another user" do
@@ -57,7 +57,7 @@ describe Message do
       end
 
       it "does not prompt a response from Bob" do
-        expect(BobMessage.where.not(id: 4)).to be_empty
+        expect(BobMessage.where.not(id: 4)).to_not exist
       end
 
     end

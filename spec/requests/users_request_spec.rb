@@ -13,12 +13,12 @@ describe "Users API" do
         expect(resp_data.user.id.to_i).to eq User.last.id
         expect(resp_data.user.name).to eq "User#{ resp_data.user.id }"
         expect(resp_data.user.token).to_not be nil
-        expect(User.find_by(id: resp_data.user.id)).to_not be nil
+        expect(User.where(id: resp_data.user.id)).to exist
       end
 
       it "creates a join message" do
         post '/api/users'
-        expect(JoinMessage.find_by(user: User.last)).to_not be nil
+        expect(JoinMessage.where(user: User.last)).to exist
       end
 
     end
@@ -44,7 +44,7 @@ describe "Users API" do
           nil,
           { Authorization: "Bearer #{ test_user.token }" }
         )
-        expect(JoinMessage.find_by(user: test_user)).to_not be nil
+        expect(JoinMessage.where(user: test_user)).to exist
       end
 
     end
@@ -60,7 +60,7 @@ describe "Users API" do
         { Authorization: "Bearer #{ test_user.token }" }
       )
       expect(response).to be_success
-      expect(LeaveMessage.find_by(user: test_user)).to_not be nil
+      expect(LeaveMessage.where(user: test_user)).to exist
     end
 
   end

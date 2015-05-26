@@ -10,7 +10,7 @@ describe "Messages API" do
         { Authorization: "Bearer #{ test_user.token }" }
       )
       expect(response).to be_success
-      expect(Message.find_by(user: test_user, text: 'Foobar')).to_not be nil
+      expect(Message.where(user: test_user, text: 'Foobar')).to exist
     end
   end
 
