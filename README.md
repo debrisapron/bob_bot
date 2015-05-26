@@ -8,7 +8,7 @@ Enter anything to see a response from Bob. Start your message "@bob " to send a 
 
 ## Installation
 
-Prerequisites: Ruby v2.2.2, Bundler, Node/iojs, npm & a running PostgreSQL server.
+Prerequisites: Ruby v2.2.2, Bundler, Node/iojs & a running PostgreSQL server.
 
 ```
 git clone https://github.com/debrisapron/bob_bot.git
