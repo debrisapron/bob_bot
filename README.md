@@ -1,6 +1,6 @@
 # bob-bot
 
-A real-time chatroom with a simple reply bot for the Everchron code challenge.
+A real-time chatroom with a simple reply bot for a code challenge.
 
 ## Instructions for use
 
